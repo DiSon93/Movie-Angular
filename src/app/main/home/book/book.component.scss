@@ -1,0 +1,27 @@
+.book-detail {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    .book-tittle {
+       background-color: rgba(199, 118, 118, 0.600);
+       position: absolute;
+       top: -78px;
+        display: flex;
+        .dropdown,
+        .book-button {
+            margin: auto 0;
+            .book-show {
+                margin: 20px 0;
+                //  top: -30px !important;
+            }
+        }
+        .movie {
+            width: 300px;
+        }
+        .theater,
+        .daylist,
+        .showntime {
+            width: 180px;
+        }
+    }
+}

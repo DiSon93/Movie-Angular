@@ -1,0 +1,145 @@
+<div class="signup-tittle">
+    <h1>Đăng ký</h1>
+    <img src="assets/img/group@2x.png" alt="">
+</div>
+<!-- ngForm cung cấp các phương thức làm việc với form  -->
+<!-- signupForm.value => {taiKhoan: 123}  -->
+<!-- taiKhoan, email, soDT, matKhau, hoTen  -->
+
+<!-- <pre>{{ signupForm.value | json}}</pre> -->
+<form #signupForm="ngForm" class="form-container" (ngSubmit)="handleSignup()">
+    <!-- tài khoản  -->
+   
+    <mat-form-field appearance="fill">
+        
+        <mat-label>Tài khoản</mat-label>
+        <input matInput ngModel name="taiKhoan" #taiKhoan="ngModel" required minlength="3" maxlength="20">
+        <mat-icon matSuffix>
+            <span class="material-icons">
+                assignment_ind
+                </span>
+        </mat-icon>
+        
+        <mat-error *ngIf="taiKhoan.invalid">
+            <span *ngIf="taiKhoan.errors?.required">
+                Tài khoản không được để trống
+            </span>
+            <span *ngIf="taiKhoan.errors?.minlength || taiKhoan.errors?.maxlength">
+                Tài khoản phải từ 3 đến 20 kí tự
+            </span>
+        </mat-error>
+        <!-- <pre>{{taiKhoan.errors | json}}</pre> -->
+        <!-- <div *ngIf="taiKhoan.invalid && (taiKhoan.dirty || taiKhoan.touched)">
+            Tài khoản không được bỏ trống
+        </div> -->
+    </mat-form-field>
+    <!-- mật khẩu  -->
+    
+    <mat-form-field appearance="fill">
+            <mat-label>Mật Khẩu</mat-label>
+            <input type="password" matInput ngModel name="matKhau" #matKhau="ngModel" required minlength="5">
+            <mat-icon matSuffix>
+                <span class="material-icons">
+                    lock
+                    </span>
+            </mat-icon>
+            <mat-error *ngIf="matKhau.invalid">
+                <span *ngIf="matKhau.errors?.required">
+                    Mật khẩu không được để trống
+                </span>
+                <span *ngIf="matKhau.errors?.minlength">
+                    Mật khẩu phải lớn hơn 5 ký tự
+                </span>
+    
+            </mat-error>
+    </mat-form-field>
+
+    <!-- Email  -->
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput ngModel name="email" type="email" #email="ngModel" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"/>
+        <mat-icon matSuffix> 
+            <span class="material-icons">
+                email
+                </span>
+        </mat-icon>      
+        <mat-error *ngIf="email.invalid">
+            <span *ngIf="email.errors?.required">
+                Email không được để trống
+            </span>
+            <span *ngIf="email.errors?.pattern">
+                Email không đúng định dạng
+            </span>
+
+        </mat-error>
+    </mat-form-field>
+
+    <!-- họ Tên  -->
+    <mat-form-field appearance="fill">
+        <mat-label>Họ tên</mat-label>
+        <input matInput ngModel name="hoTen" #hoTen="ngModel" required>
+        <mat-icon matSuffix>
+            <span class="material-icons">
+                face
+                </span>
+        </mat-icon>
+        <mat-error *ngIf="hoTen.invalid">
+            <span *ngIf="hoTen.errors?.required">
+                Họ tên không được để trống
+            </span>
+
+        </mat-error>
+    </mat-form-field>
+
+    <!-- Số điện thoại  -->
+    <mat-form-field appearance="fill">
+        <mat-label>Số điện thoại</mat-label>
+        <input matInput ngModel name="soDT" #soDT="ngModel" required >
+        <mat-icon matSuffix>
+            <span class="material-icons">
+                perm_phone_msg
+                </span>
+        </mat-icon>
+        <mat-error *ngIf="soDT.invalid">
+            <span *ngIf="soDT.errors?.required">
+                Số điện thoại không được để trống
+            </span>
+            
+        </mat-error>
+    </mat-form-field>
+
+    <!-- <button [disabled]="signupForm.invalid">Submit</button> -->
+    <button mat-raised-button color="accent" >Đăng ký</button>
+    <p *ngIf="errors" class="alert alert-danger" >
+        {{errors?.error}}
+    </p>
+</form>
+
+<div class="modal-succcess">
+    <div class="text-center">
+        <!-- Button HTML (to Trigger Modal) -->
+        <a #myDiv href="#myModal" class="trigger-btn" data-toggle="modal" id="modal-trigger">Click to Open Confirm Modal</a>
+    </div>
+    
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal fade" *ngIf="modal"> 
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="icon-box">
+                        <i class="material-icons">offline_pin</i>
+                    </div>				
+                    <h4 class="modal-title">Awesome!</h4>	
+                </div>
+
+                <div class="modal-body">
+                    <p class="text-center">Chúc mừng bạn đã đăng ký thành công</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+                </div>
+             
+            </div>
+        </div>
+    </div>    
+</div>

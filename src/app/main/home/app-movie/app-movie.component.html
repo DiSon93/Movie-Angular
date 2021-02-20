@@ -1,0 +1,34 @@
+
+<div class="app-movie" style="background-image: url('assets/img/backapp.jpg');">
+    <div class="app-movie-information">
+        <div class="app-tittle">
+            <h1>Ứng dụng tiện lợi dành cho người yêu điện ảnh</h1>
+            <p>Không chỉ đặt vé, bạn còn có thể bình luận phim, chấm điểm rạp và đổi quà hấp dẫn.</p>
+            <a href="https://apps.apple.com/us/app/123phim-mua-ve-lien-tay-chon/id615186197"><button>App miễn phí - Tải về ngay</button></a>
+            
+            <p>
+                <span>TIX có hai phiên bản </span><span><a href="https://apps.apple.com/us/app/123phim-mua-ve-lien-tay-chon/id615186197">iOS</a> </span> <span> & </span> <span><a
+                        href="https://play.google.com/store/apps/details?id=vn.com.vng.phim123">Android</a> </span>
+            </p>
+        </div>
+    </div>
+    <div class="app-movie-phone">
+        <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+            <div ngxSlickItem *ngFor="let app of listApp" class="slide app-slide">
+                <!-- <img [src]="movie.hinhAnh" alt="" width="200px" height="280px"> -->
+                <div class="card app-list-card">
+                    <div class="card app-list text-left">
+                        <img class="card-img-top" [src]="app.hinhAnh" alt="" height="500px">
+
+                    </div>
+
+
+                    <div class="overlay">
+                    </div>
+                </div>
+            </div>
+
+
+        </ngx-slick-carousel>
+    </div>
+</div>

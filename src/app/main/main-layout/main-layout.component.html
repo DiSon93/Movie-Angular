@@ -1,0 +1,150 @@
+<!-- HEADER  -->
+<nav class="navbar navbar-expand-sm header container-fluid">
+    <a class="navbar-brand col-3" routerLink="/">
+        <img src="assets/img/web-logo.png" alt="">
+    </a>
+    <!-- <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button> -->
+
+    <div class="collapse navbar-collapse col-9 header_content" id="collapsibleNavId">
+        
+        <ul class="navbar-nav header-content mt-2 mt-lg-0 col-6">
+            <li class="nav-item active">
+                <a class="nav-link btn-2" href="#">Lịch chiếu </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link btn-2" href="#">Cụm rạp</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link btn-2" href="#">Tin Tức </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link btn-2" href="#">Ứng dụng</a>
+            </li>
+
+
+        </ul>
+        <ul class="d-flex pb-0 user_header col-6">
+            <form class="form-inline my-2 my-lg-0 mr-4">
+                <input class="form-control mr-sm-2" type="search" placeholder="Tìm phim" aria-label="Search">
+              </form>
+            <li *ngIf="currentuser" class="notification nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <i class="material-icons">
+                        circle_notifications
+                    </i>
+                </a>
+                <div class="dropdown-menu thongbao" style="width: 250px" aria-labelledby="dropdownId">
+                    <a class="dropdown-item" href="#">Bạn chưa có thông báo nào</a>
+                   
+                </div>
+
+            </li>
+            <li *ngIf="currentuser" class="profile nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">             
+                    Xin chào {{detailuser.taiKhoan}} 
+                    <img src="assets/img/Taylor-Lautner-1024x683.jpg" alt="">
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownId">
+                    <a class="dropdown-item" href="#">Thông tin cá nhân</a>
+                    <a class="dropdown-item" href="#">Lịch sử đặt vé</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/" (click)="logOut()">Đăng xuất</a>
+                </div>
+            </li>
+            <li *ngIf="!currentuser" class="nav-item active signin">
+
+                <a class="nav-link btn-2" routerLink="signin">
+                    <img src="assets/img/baseline_person_black_18dp.png" alt="">
+                    Đăng nhập
+                </a>
+            </li>
+            <li *ngIf="!currentuser" class="nav-item active signup">
+
+                <a class="nav-link btn-2" routerLink="signup">
+                    <img src="assets/img/more_vert-white-18dp.svg" alt="">
+                    Đăng ký
+                </a>
+            </li>
+
+        </ul>
+
+
+    </div>
+</nav>
+
+<router-outlet></router-outlet>
+
+<div class="footer">
+    <div class="container">
+        <div class="co-operation">
+            <div class="row">
+                <div class="col-2 tix">
+                    <h4>TIX</h4>
+                    <a href="">FAQ</a> <br>
+                    <a href="">Brand Guidelines</a>
+                </div>
+                <div class="col-2 tix">
+                    <br>
+                    <br>
+                    <a href="">Thỏa thuận sử dụng</a> <br>
+                    <a href="">Chính sách bảo mật</a>
+                </div>
+                <div class="col-3">
+                    <h4>ĐỐI TÁC</h4>
+                    <div class="logo">
+                        <img src="assets/img/cgv.png" alt="">
+                        <img src="assets/img/cinestar.png" alt="">
+                        <img src="assets/img/cnx.jpg" alt="">
+                        <img src="assets/img/bt.jpg" alt="">
+                        <img src="assets/img/bhd.png" alt="">
+                        <img src="assets/img/galaxycine.png" alt="">
+                        <img src="assets/img/TOUCH.png" alt="">
+                        <img src="assets/img/dongdacinema.png" alt="">
+                        <img src="assets/img/cgv.png" alt="">
+                        <img src="assets/img/megags.png" alt="">
+
+
+                    </div>
+
+                </div>
+                <div class="col-3">
+                    <h4>MOBILE APP</h4>
+                    <div class="mobile-app">
+                        <img src="assets/img/android-logo.png" alt="">
+                        <img src="assets/img/apple-logo.png" alt="">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <h4>SOCIAL</h4>
+                    <div class="social">
+                        <img src="assets/img/zalo-logo.png" alt="">
+                        <img src="assets/img/facebook-logo.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="movie-footer">
+            <div class="logo">
+                <img src="assets/img/zion-logo.jpg" alt="">
+            </div>
+            <div class="tittle">
+                <h4>TIX – SẢN PHẨM CỦA CÔNG TY CỔ PHẦN ZION</h4>
+                <p>Địa chỉ: Z06 Đường số 13, Phường Tân Thuận Đông, Quận 7, Tp. Hồ Chí Minh, Việt Nam.</p>
+                <p>Giấy chứng nhận đăng ký kinh doanh số: 0101659783,</p>
+                <p>đăng ký thay đổi lần thứ 30, ngày 22 tháng 01 năm 2020 do Sở kế hoạch và đầu tư Thành phố Hồ Chí Minh
+                    cấp.</p>
+                <p>Số Điện Thoại (Hotline): 1900 545 436</p>
+                <p>Email: <a href="">support@tix.vn</a></p>
+            </div>
+            <div class="guarantee">
+                <img src="assets/img/d1e6bd560daa9e20131ea8a0f62e87f8.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>

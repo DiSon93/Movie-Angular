@@ -1,0 +1,66 @@
+.app-movie{
+    margin-top: 50px;
+    height: 620px;
+    // background: url("assets/img/backapp.jpg");
+    display: flex;
+    .app-movie-information{
+        width: 50%;
+        color: white;
+        display: flex;
+        justify-content: center;
+        .app-tittle{
+            width: 50%;
+            margin: auto 0;
+            h1{
+                font-size: 25px;
+                font-weight: 700;
+                letter-spacing: 0.8px;
+            }
+            p{
+                font-size: 16px;
+                letter-spacing: 0.8;
+                a{
+                    color: rgb(228, 33, 65);
+                }
+            }
+            button{
+                padding: 7px 12px;
+                outline: none;
+                border: none;
+                border-radius: 6px;
+                background: linear-gradient(to right, rgb(235, 118, 137), rgb(228, 33, 65));
+                color: white;
+                font-weight: 500;
+                margin-bottom: 20px;
+                &:hover{
+                    box-shadow: 5px 5px 4px 5px rgb(126, 126, 207);
+                }
+            }
+           
+        }
+    }
+    .app-movie-phone{
+        width: 16%;
+        // display: flex;
+        .carousel{
+            // width: 30%;
+            margin: auto 0;
+            line-height: 620px;
+            margin-top: 58px;
+            background-color: transparent;
+           .app-slide{
+               background: transparent;
+               .app-list-card{
+                   background: transparent;
+                   .app-list{
+                       background: transparent;
+                   }
+               }
+           }
+            img{
+                border-radius: 30px;
+            }
+        }
+    }
+    
+}

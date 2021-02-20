@@ -1,0 +1,121 @@
+.signin-tittle{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: block;
+    text-align: center;
+    h1{
+        font-size: 38px;
+        font-weight: 700;
+        color: orangered;
+    }
+    img{
+        width: 300px;
+    }
+}
+.signin-form-control{
+    display: flex;
+    justify-content: center;
+    .signin-form{
+        display: block;
+        width: 600px;
+        // padding: 0 auto;
+        mat-label{
+            color: white;
+            // background-color: white;           
+        }
+        img{
+            border: 2px solid white;
+        }  
+        button{
+            width: 600px
+        }
+        .checked-info{
+            margin: 15px;
+        }
+        .more-info{
+            // text-align: center;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            a{
+                &:hover{
+                    color: rgb(231, 39, 71);
+                    text-decoration: none;
+                }
+            }
+        }
+        .or{
+            
+            p{
+                border-radius: 50px;
+                width: 40px;
+                height: 40px;
+                background-color: rgb(235, 54, 84);
+                line-height: 40px;
+                text-align: center;
+                margin: 0 auto;
+            }
+        }
+        .login-option{
+            margin: 20px auto;
+            img{
+                width: 220px;
+                &:hover{
+                    opacity: 0.6;
+                }
+            }
+            .fb-go{
+                display: flex;
+                justify-content: space-between;
+                margin-top: 20px;
+            }
+            .zalo{
+                display: flex;
+                justify-content: center;
+               
+            }
+        }
+    }
+
+}
+
+.mat-form-field-appearance-fill .mat-form-field-underline::before{
+    background-color: white!important;
+    &:hover{
+        background-color: red;
+    }
+}
+
+
+.mat-form-field-label {
+    color: rgb(184, 165, 165) !important;
+    font-size: 20px!important;
+    width: 570px!important;
+}
+.mat-form-field-underline {
+    background-color: white !important;
+   
+    width: 570px!important;
+    
+}
+.mat-form-field-ripple {
+    background-color: white !important;
+    width: 570px;
+}
+.mat-form-field-appearance-fill .mat-form-field-flex{
+    width: 570px!important;
+}
+.checked-info{
+    display: flex;
+    justify-content: space-between;
+    width: 570px;
+    a{
+        &:hover{
+            color: rgb(231, 39, 71);
+            text-decoration: none;
+        }
+    }
+}
+mat-error{
+    font-size: 13px!important;
+    width: 400px!important;
+}

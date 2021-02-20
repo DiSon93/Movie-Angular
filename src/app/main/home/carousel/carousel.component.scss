@@ -1,0 +1,41 @@
+.carousel {
+    position: relative;
+    .carousel-indicators {
+        position: absolute;
+        bottom: 80px;
+    }
+    .indicator-movie {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        left: 150px !important;
+    }
+    .carousel-control-next-icon,
+    .carousel-control-prev-icon {
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    .carousel-indicators {
+        .active {
+            background-color: orangered !important;
+        }
+    }
+    .play-video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        img:hover{
+            opacity: 0.6;
+        }
+        
+    }
+    // .modal{
+    //     // z-index: 10;
+    //     width: 720px!important;
+    //     height: 415px!important;
+    // }
+
+}

@@ -1,0 +1,183 @@
+<div class="movieDetail container-fluid">
+    <div class="row">
+        <div class="movie-img col-4">
+            <img [src]="movieDetail.hinhAnh" alt="">
+
+        </div>
+        <div class="movie-info col-4">
+            <p>{{movieDetail.ngayKhoiChieu}}</p>
+            <span class="mr-4 c13">C13</span>
+            <span class="movie-name">{{movieDetail.tenPhim}}</span>
+            <p class="howlong">{{showtimes[0].thoiLuong}} phút</p>
+            <button mat-raised-button color="warn" class="muave">Mua vé</button>
+            <br>
+            <br>
+            <br>
+            <a class="trailer" [href]="movieDetail.trailer">
+                <span>
+                    <i class="material-icons">
+                        headset
+                    </i>
+                </span>
+                <span class="watch">Xem trailer</span>
+            </a>
+        </div>
+        <div class="star col-4">
+            <p>Đánh giá</p>
+            <h1>{{movieDetail.danhGia}}</h1>
+        </div>
+    </div>
+
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#lichChieu" role="tab"
+            aria-controls="nav-home" aria-selected="true">Lịch chiếu</a>
+        <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#thongTin" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Thông tin</a>
+        <a class="nav-link" id="nav-contact-tab" data-toggle="tab" href="#danhGia" role="tab"
+            aria-controls="nav-contact" aria-selected="false">Đánh giá</a>
+    </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="lichChieu" role="tabpanel" aria-labelledby="nav-home-tab">
+        <app-banner></app-banner>
+        <app-show-times></app-show-times>
+    </div>
+    <div class="tab-pane fade thongTinPhim" id="thongTin" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <div class="movie-detail col-6">
+
+            <table class="table table-borderless table-dark ">
+                <tbody>
+                    <tr>
+                        <th scope="row">Ngày công chiếu</th>
+                        <td>{{movieDetail.ngayKhoiChieu}}</td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row">Đạo diễn</th>
+                        <td>Charlie Nguyễn</td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row">Diễn viên</th>
+                        <td>Emma Watson</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Thể loại</th>
+                        <td>Hài hước</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Định dạng</th>
+                        <td>Larry</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Quốc gia</th>
+                        <td>Mỹ, Việt Nam</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="movie-content col-6">
+            <h3>Nội dung phim</h3>
+            <p>{{movieDetail.moTa}}</p>
+        </div>
+    </div>
+    <div class="tab-pane fade danhGiaPhim" id="danhGia" role="tabpanel" aria-labelledby="nav-contact-tab">
+        <div class="evaluate">
+            <a class="your-think" type="button" data-toggle="modal" data-target="#exampleModal">
+                <img *ngIf="!currentuser" src="assets/img/account_circle-white-18dp.svg" alt="" class="mr-3">
+                <img *ngIf="currentuser" src="assets/img/Taylor-Lautner-1024x683.jpg" alt="" class="mr-3">
+                <span class="nhanxet">Bạn nghĩ gì về phim này ha</span>
+                <span class="diem">
+                    <span class="material-icons">
+                        star_rate
+                    </span>
+                    <span class="material-icons">
+                        star_rate
+                    </span>
+                    <span class="material-icons">
+                        star_rate
+                    </span>
+                    <span class="material-icons">
+                        star_rate
+                    </span>
+                    <span class="material-icons">
+                        star_rate
+                    </span>
+                </span>
+            </a>
+
+        </div>
+    </div>
+</div>
+
+<div *ngIf="currentuser" class="modal fade modal-usercomment" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    <div style="text-align:center" class="star-rating">
+                        <h1 class="mb-1">
+                            Đánh giá của bạn
+                        </h1>
+                        <h4 class="mb-1">({{newstar}})</h4>
+                        <star-rating [value]="10" [totalstars]="10" checkedcolor="red" uncheckedcolor="black" size="24px"
+                            [readonly]="false" (rate)="onRate($event)"></star-rating>
+                    </div>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form  #commentForm="ngForm" class="form-container">
+                    <textarea ngModel name="comment" #comment="ngModel" required cols="30" rows="10"  [(ngModel)]="form.comment" placeholder="Hãy cho mọi người biết bạn đang suy nghĩ gì nè..."></textarea>
+                    <input type="file" ngModel name="hinhAnh" id="" class="form-control"  [(ngModel)]="form.hinhAnh"/>
+                    <br>
+                    <button type="button" class="btn btn-success" (click)="handleSubmit()">ĐĂNG</button>
+                </form>             
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="!currentuser" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Không curentuser
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg"></div>
+
+<div class="star-field">
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="layer"></div>

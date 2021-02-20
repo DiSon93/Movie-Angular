@@ -1,0 +1,133 @@
+.header {
+    background-color: rgba(77, 74, 74, 0.685)!important;
+    font-size: 16px;
+    .navbar-brand{
+        padding: 0!important;
+        img{
+            height: 40px;
+        }
+    }
+    .header_content {
+        img {
+            height: 25px;
+            width: 25px;
+            border-radius: 50%;
+            border: 1px solid white;         
+        }
+        .signup{
+            img{
+                border: none;
+            }
+            .nav-link:hover{
+                color: rgb(238, 62, 92)!important;
+                transition: 0.5s;
+            }
+        }
+        .signin{
+            a:hover{
+                color: rgb(238, 62, 92)!important;
+                transition: 0.5s;
+            }
+        }
+        .profile{
+            // height: 50px;
+            width: 70px;
+            border-radius: 50%;
+        }
+      
+    }
+    .header-content {
+        justify-content: center;
+        a{
+            color: white;    
+            font-weight: 500;      
+        }     
+    }
+    .user_header {
+        margin: 0 auto;
+        list-style: none;
+        text-align: right;
+        display: flex;
+        padding-right: 0;
+        .form-control{
+            height: 30px;
+        }
+        .nav-link {
+            padding: 0 !important;
+            color: white !important;
+            margin-right: 22px;
+            
+        }
+    }
+    .nav-item:hover .nav-link {
+        color:rgb(238, 62, 92);
+        transition: 0.5s;
+    }
+    .diaChi {
+        width: 20px !important;
+    }
+}
+.footer {
+    padding-top: 12px;
+    background-color: rgb(37, 32, 32);
+    color: white;
+    .tix {
+        display: block;
+        a{
+            text-decoration: none;
+            color: white;
+            &:hover {
+                color: rgb(238, 62, 92);
+            }
+        }
+    }
+    hr {
+        //   background-color: white;
+        background-color: white;
+        height: 2px;
+    }
+    .logo {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin: 5px 15px 7px 0;
+        }
+    }
+    .mobile-app {
+        img {
+            height: 30px;
+            width: auto;
+            margin: 5px;
+        }
+    }
+    .social {
+        img {
+            height: 30px;
+            width: auto;
+            margin: 5px;
+        }
+    }
+    .movie-footer {
+        display: flex;
+        .logo {
+            width: 10%;
+            img {
+                width: 80px;
+                height: auto;
+            }
+        }
+        .tittle {
+            width: 65%;
+        }
+        .guarantee {
+            width: 25%;
+            img {
+                width: 130px;
+            }
+        }
+    }
+
+}

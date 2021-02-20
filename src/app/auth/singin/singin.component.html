@@ -1,0 +1,92 @@
+<div class="signin-tittle">
+    <h1>Đăng nhập</h1>
+    <img src="assets/img/group@2x.png" alt="">
+</div>
+
+<div class="signin-form-control">
+
+    <!-- <pre>{{ signinForm.value | json}}</pre> -->
+    <form class="signin-form" [formGroup]="signinForm" (ngSubmit)="handleSignin()">
+        <img src="assets/img/m.png" alt="">
+        <mat-form-field appearance="fill">
+
+            <mat-label>Tài Khoản</mat-label>
+
+            <input matInput formControlName="taiKhoan" />
+
+
+            <mat-error *ngIf="signinForm.get('taiKhoan')?.invalid">
+                <span *ngIf="signinForm.get('taiKhoan')?.errors?.required">
+                    Tài khoản không đươc để trống
+                </span>
+
+                <span
+                    *ngIf="signinForm.get('taiKhoan')?.errors?.minlength || signinForm.get('taiKhoan')?.errors?.maxlength">
+                    Tài khoản phải từ 3 đến 20 kí tự
+                </span>
+            </mat-error>
+        </mat-form-field>
+        <br>
+        <img src="assets/img/l.png" alt="">
+        <mat-form-field appearance="fill">
+            <mat-label>Mật Khẩu</mat-label>
+            <input type="password" matInput formControlName="matKhau" />
+
+            <mat-error *ngIf="signinForm.get('matKhau')?.invalid">
+                <span *ngIf="signinForm.get('matKhau')?.errors?.required">
+                    Mật khẩu không đươc để trống
+                </span>
+                <span *ngIf="signinForm.get('matKhau')?.errors?.minlength">
+                    Mật khẩu quá ngắn, vui lòng nhập lại
+                </span>
+
+
+            </mat-error>
+
+
+            <!-- <mat-error *ngIf="email.invalid">
+ 
+        </mat-error> -->
+
+        </mat-form-field>
+
+        <br>
+        <div class="checked-info">
+            <div class="chec">
+                <input type="checkbox" value="Remenber me" />Remember me
+            </div>
+            <a class="text-right" href="">Quên mật khẩu?</a>
+        </div>
+
+        <br>
+
+        <button mat-raised-button color="accent">Đăng nhập</button>
+        <p *ngIf="errors" class="alert alert-danger">
+            {{errors?.error}}
+        </p>
+
+        <br>
+        <div class="more-info">
+            <span>Bạn chưa có tài khoản? </span> <a routerLink="/signup">Đăng ký</a>
+        </div>
+        <div class="or">
+            <p>Or</p>
+        </div>
+        <div class="login-option">
+            <div class="zalo">
+                <a  href="">
+                    <img src="assets/img/btn-Zalo.png" alt="">
+                </a>
+            </div>
+            <div class="fb-go">
+                <a href="">
+                    <img src="assets/img/btn-FB.png" alt="">
+                </a>
+                <a href="">
+                    <img src="assets/img/btn-Google.png" alt="">
+                </a>
+            </div>
+        </div>
+    </form>
+
+</div>
