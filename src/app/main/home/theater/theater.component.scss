@@ -1,0 +1,109 @@
+.theater__section{
+    margin: 30px auto;
+    h1{
+        color: orangered;
+        font-weight: 700;
+        text-align: center;
+    }
+}
+.theater{
+    display: flex;
+    .theater__list{
+        width: 15%;
+      
+        .theater__logo{
+            img{
+                height: 80px;
+                width:  80px;
+                &:hover{
+                    border: 2px solid orangered;
+                    transition: 0.5s;
+                    opacity: 0.6;
+                }
+            }
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    }
+    .theater__banner{
+        width: 35%;
+        height: 600px;
+        overflow-y: scroll;
+        .theater__name{
+            display: flex;
+            background: linear-gradient(to right, palegreen, rgb(148, 148, 219));
+            // background-color: palegreen;
+            .theater__img{
+                img{
+                    width: 40px;
+                    height: 40px;
+                    margin-top: 5px;
+                    margin-left: 5px;
+                }
+            }
+            .theater__info{
+                h3{
+                    margin-bottom: 0px;
+                    color: green;
+                    font-weight: 500;
+                   
+                }
+                p{
+                    margin-bottom: 0px;
+                }
+                .chiTiet{
+                    color: red;
+                }
+                margin-left: 10px;
+            }
+            margin-bottom: 15px;
+           
+        }
+    }
+    .theater__movie{
+        width: 50%;
+        margin-bottom: 10px;
+        height: 600px;
+        overflow-y: scroll;
+        .movie__tittle{
+            display: flex;
+            margin-left: 40px;
+            margin-bottom: 20px;
+            background-color: rgb(197, 194, 194);
+            border-radius: 10px;
+            &:hover{
+                background: linear-gradient(to right, palegreen, rgb(148, 148, 219));   
+                transition: 0.5s;
+            }
+            img{
+                width: 100px;
+                height: 100px;
+                margin: 10px;
+                border-radius: 10px;
+            }
+            .movie_info{
+                h2{
+                    color: orangered;
+                    margin-bottom: 4px;
+                    margin-top: 10px;
+                    font-weight: 500;
+                }
+                .dinh-danh{
+                    h1{
+                        color: rgb(104, 170, 6);
+                        font-weight: 700;
+                    }
+                    a{
+                        margin-top: 5px;
+                        margin-left: 10px;
+                        // text-decoration: none;
+                        color: rgb(96, 96, 99);
+                        &:hover{
+                             color: #ff4081;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

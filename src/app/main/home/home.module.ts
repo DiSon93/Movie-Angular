@@ -12,15 +12,21 @@ import { NewsComponent } from './news/news.component';
 
 import {MatButtonModule} from '@angular/material/button';
 import { AppMovieComponent } from './app-movie/app-movie.component';
+import { TheaterComponent } from './theater/theater.component';
+
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
 
 
 @NgModule({
-  declarations: [HomeComponent, CarouselComponent, MovieListComponent, BookComponent, NewsComponent, AppMovieComponent],
+  declarations: [HomeComponent, CarouselComponent, MovieListComponent, BookComponent, NewsComponent, AppMovieComponent, TheaterComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
     SlickCarouselModule,
     MatButtonModule,
+    MatSidenavModule,
+    MatListModule,
   ]
 })
 export class HomeModule { }

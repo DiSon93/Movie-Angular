@@ -8,7 +8,7 @@
             <p>{{movieDetail.ngayKhoiChieu}}</p>
             <span class="mr-4 c13">C13</span>
             <span class="movie-name">{{movieDetail.tenPhim}}</span>
-            <p class="howlong">{{showtimes[0].thoiLuong}} phút</p>
+            <p class="howlong">{{showtimes[0]?.thoiLuong}} phút</p>
             <button mat-raised-button color="warn" class="muave">Mua vé</button>
             <br>
             <br>
@@ -24,7 +24,12 @@
         </div>
         <div class="star col-4">
             <p>Đánh giá</p>
-            <h1>{{movieDetail.danhGia}}</h1>
+            <h1>{{movieDetail.danhGia}}<i class="material-icons">
+                star_rate
+                </i></h1> 
+          
+            <star-rating [value]="movieDetail.danhGia" [totalstars]="10" checkedcolor="red" uncheckedcolor="pink"
+                size="24px" [readonly]="false"></star-rating>
         </div>
     </div>
 
@@ -99,7 +104,7 @@
         <div class="evaluate">
             <a class="your-think" type="button" data-toggle="modal" data-target="#exampleModal">
                 <img *ngIf="!currentuser" src="assets/img/account_circle-white-18dp.svg" alt="" class="mr-3">
-                <img *ngIf="currentuser" src="assets/img/Taylor-Lautner-1024x683.jpg" alt="" class="mr-3">
+                <img *ngIf="currentuser" src="assets/img/comment0.jpg" alt="" class="mr-3">
                 <span class="nhanxet">Bạn nghĩ gì về phim này ha</span>
                 <span class="diem">
                     <span class="material-icons">
@@ -121,11 +126,167 @@
             </a>
 
         </div>
+        <div *ngIf="display">
+            <div *ngFor="let comment of yourComment" class="comment1 mt-4">
+                <div class="comment_tittle">
+                    <div class="nick_name">
+                        <div class="nick_nane_left">
+                            <img src="assets/img/comment0.jpg" alt="">
+                            <div class="name">
+                                <h4>{{detailuser?.taiKhoan}}</h4>
+                                <p>Vừa xong</p>
+                            </div>
+                        </div>
+
+                        <div class="rate-star">
+                            <i class="material-icons">
+                                star_rate
+                            </i>
+                            <span>({{comment.rate}})</span>
+
+                        </div>
+
+                    </div>
+                    <div class="comment_here">
+                        <p>{{comment.comment}}</p>
+                        <hr>
+                        <div class="like">
+                            <img class="mr-2" src="assets/img/thumb_up_alt-black-18dp.svg" alt="">
+                            <span class="mr-2">0</span>
+                            <span class="mr-2">Thích</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="comment1 mt-4">
+            <div class="comment_tittle">
+                <div class="nick_name">
+                    <div class="nick_nane_left">
+                        <img src="assets/img/comment1.jpg" alt="">
+                        <div class="name">
+                            <h4>Nguyễn Phương Dung</h4>
+                            <p>12h trước</p>
+                        </div>
+                    </div>
+
+                    <div class="rate-star">
+                        <i class="material-icons">
+                            star_rate
+                        </i>
+                        <span>(10)</span>
+
+                    </div>
+
+                </div>
+                <div class="comment_here">
+                    <p>Phim có nội dung thu hút, nhạc hay và đặt đúng mạch cảm xúc. Diễn viên diễn xuất ổn.</p>
+                    <hr>
+                    <div class="like">
+
+                        <ng-container *ngIf="isLike1, else liked1">
+                            <img (click)="addLike1()" class="mr-2" src="assets/img/thumb_up_alt-black-18dp.svg" alt="">
+                        </ng-container>
+                        <span class="mr-2">{{like1}}</span>
+                        <span class="mr-2">Thích</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="comment1">
+            <div class="comment_tittle">
+                <div class="nick_name">
+                    <div class="nick_nane_left">
+                        <img src="assets/img/comment3.jpg" alt="">
+                        <div class="name">
+                            <h4>Trần Minh</h4>
+                            <p>1 ngày trước</p>
+                        </div>
+                    </div>
+
+                    <div class="rate-star">
+                        <i class="material-icons">
+                            star_rate
+                        </i>
+                        <span>(9)</span>
+                    </div>
+                </div>
+                <div class="comment_here">
+                    <p>Phim tình cảm rất hay và nữ diễn viên chính xinh đẹp diễn xuất sắc</p>
+                    <hr>
+                    <div class="like">
+                        <ng-container *ngIf="isLike2, else liked2">
+                            <img (click)="addLike2()" class="mr-2" src="assets/img/thumb_up_alt-black-18dp.svg" alt="">
+                        </ng-container>
+
+                        <span class="mr-2">{{like2}}</span>
+                        <span class="mr-2">Thích</span>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="comment1">
+            <div class="comment_tittle">
+                <div class="nick_name">
+                    <div class="nick_nane_left">
+                        <img src="assets/img/comment2.jpg" alt="">
+                        <div class="name">
+                            <h4>Trang thảo</h4>
+                            <p>2 ngày trước</p>
+                        </div>
+                    </div>
+
+                    <div class="rate-star">
+                        <i class="material-icons">
+                            star_rate
+                        </i>
+                        <span>(5)</span>
+
+                    </div>
+                </div>
+                <div class="comment_here">
+                    <p>chán ốm và nhạt nhẽo, ít đầu tư, như phim hạng B. chỉ có mỗi sao thì ko đủ kéo phim dậy được. lại
+                        thêm cái nội dung mang tính chính trị khá lộ liễu, bây giờ chú không bảo vệ gia đình, con cái
+                        nữa, mà bảo vệ một đứa nhóc Mexio vượt biên và giúp nó ở lại nước Mỹ, funny!</p>
+                    <hr>
+                    <div class="like">
+                        <ng-container *ngIf="isLike3, else liked3">
+                            <img (click)="addLike3()" class="mr-2" src="assets/img/thumb_up_alt-black-18dp.svg" alt="">
+                        </ng-container>
+                        <span class="mr-2">{{like3}}</span>
+                        <span class="mr-2">Thích</span>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+        <ng-template #liked1 class="changecolor">
+            <img style="opacity: 1;" (click)="addLike1()" class="mr-2" src="assets/img/thumb_up_alt-black-18dp.svg"
+                alt="">
+        </ng-template>
+        <ng-template #liked2 class="changecolor">
+            <img style="opacity: 1;" (click)="addLike2()" class="mr-2" src="assets/img/thumb_up_alt-black-18dp.svg"
+                alt="">
+        </ng-template>
+        <ng-template #liked3 class="changecolor">
+            <img style="opacity: 1;" (click)="addLike3()" class="mr-2" src="assets/img/thumb_up_alt-black-18dp.svg"
+                alt="">
+        </ng-template>
     </div>
 </div>
 
-<div *ngIf="currentuser" class="modal fade modal-usercomment" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div *ngIf="currentuser" class="modal fade modal-usercomment" id="exampleModal" tabindex="-1"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog  modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -135,21 +296,23 @@
                             Đánh giá của bạn
                         </h1>
                         <h4 class="mb-1">({{newstar}})</h4>
-                        <star-rating [value]="10" [totalstars]="10" checkedcolor="red" uncheckedcolor="black" size="24px"
-                            [readonly]="false" (rate)="onRate($event)"></star-rating>
+                        <star-rating [value]="10" [totalstars]="10" checkedcolor="red" uncheckedcolor="black"
+                            size="24px" [readonly]="false" (rate)="onRate($event)"></star-rating>
                     </div>
                 </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" id="closeModal" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form  #commentForm="ngForm" class="form-container">
-                    <textarea ngModel name="comment" #comment="ngModel" required cols="30" rows="10"  [(ngModel)]="form.comment" placeholder="Hãy cho mọi người biết bạn đang suy nghĩ gì nè..."></textarea>
-                    <input type="file" ngModel name="hinhAnh" id="" class="form-control"  [(ngModel)]="form.hinhAnh"/>
+                <form #commentForm="ngForm" class="form-container">
+                    <textarea ngModel name="comment" #comment="ngModel" required cols="30" rows="10"
+                        [(ngModel)]="form.comment"
+                        placeholder="Hãy cho mọi người biết bạn đang suy nghĩ gì nè..."></textarea>
+
                     <br>
                     <button type="button" class="btn btn-success" (click)="handleSubmit()">ĐĂNG</button>
-                </form>             
+                </form>
             </div>
         </div>
     </div>
@@ -174,6 +337,8 @@
         </div>
     </div>
 </div>
+
+
 
 <div class="bg"></div>
 

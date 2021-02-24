@@ -1,0 +1,100 @@
+.movie__ticket {
+    display: flex;
+    color: white;
+    margin-left: 50px;
+    margin-bottom: 40px;
+    background-color: rgb(99, 97, 97);
+    border-radius: 50px;
+    border: 4px solid black;
+    padding: 20px;
+
+    img {
+        width: 120px;
+        height: 120px;
+        border-radius: 5px;
+    }
+    .movie_detail {
+        margin-left: 30px;
+        h2 {
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        p {
+            margin-bottom: 4px;
+        }
+        .loaiPhim {
+            display: flex;
+            h1{
+                color: rgb(104, 170, 6);
+                font-weight: 700;
+                margin-right: 10px;
+            }
+            span{
+                margin-top: 5px;
+            }
+            .time{
+                font-size: 17px;
+                font-weight: 500;
+                color: rgb(233, 98, 121);
+            }
+        }
+    }
+}
+.movie__theater {
+    display: flex;
+    margin-left: 50px;
+    margin-bottom: 40px;
+    background-color: rgb(99, 97, 97);
+    border-radius: 50px;
+    border: 4px solid black;
+    padding: 20px;
+    img {
+        width: 100px;
+        height: 100px;
+    }
+    .tenRap {
+        margin-left: 30px;
+        h2 {
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        p {
+            margin-bottom: 4px;
+        }
+        .seat{
+            .seat_select{
+                margin-right: 8px;
+                font-size: 20px;
+                font-weight: 500;
+                color: rgb(240, 85, 85);
+            }
+        }
+    }
+}
+.thanhToan{
+    margin-left: 50px;
+    margin-bottom: 40px;
+    background-color: rgb(99, 97, 97);
+    border-radius: 50px;
+    border: 4px solid black;
+    padding: 30px;
+    hr{
+        background: white;
+    }
+    button{
+        width: 100%;
+        &:hover{
+            background-color: orangered;
+            transition: 0.5s
+        }
+    }
+    .count{
+        font-size: 18px;
+        .money{
+            color: rgb(240, 85, 85);
+            font-size: 20px;
+            font-weight: 500;
+        }
+    }
+
+}

@@ -1,0 +1,28 @@
+<div class="listSeat">
+    <h2>MÀN HÌNH</h2>
+    <span class="material-icons">
+        subdirectory_arrow_right
+        </span>
+    <div class="row">
+        <div class="col-sm-5 d-flex">
+            <div class="row">
+                <div *ngFor="let seat of listSeatLeft" class="seat_book col-sm-2">
+                    <app-seat #seat [seat]="seat" (onSelect)="handleSelect($event)"></app-seat>
+                </div>
+                
+            </div>
+
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5 d-flex">
+            <div class="row">
+                <div *ngFor="let seat of listSeatRight" class="seat_book col-sm-2">
+                    <app-seat #seat [seat]="seat" (onSelect)="handleSelect($event)"></app-seat>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,6 +1,6 @@
 .movieDetail {
     color: white;
-    padding-top: 90px;
+    padding-top: 118px;
     .movie-img {
         // display: flex;
         position: relative;
@@ -64,19 +64,29 @@
     }
     .star {
         margin-top: 50px;
+        position: relative;
         h1 {
             width: 100px;
             height: 100px;
             border-radius: 50%;
             background-color: #f44336;
+            // border: 10px solid green;
             text-align: center;
             line-height: 100px;
+        }
+        i{
+            color: greenyellow
         }
         p {
             margin-left: 16px;
         }
+        star-rating {
+            position: absolute;
+            margin-left: -65px;
+        }
     }
 }
+
 
 //THÔNG TIN PHIM
 
@@ -155,19 +165,70 @@
             }
         }
     }
+    .comment1 {
+        width: 40%;
+        margin: 0 auto;
+        background-color: rgb(223, 223, 223);
+        margin-top: 25px;
+        border-radius: 8px;
+        .comment_tittle {
+            .nick_name {
+                display: flex;
+                justify-content: space-between;
+                padding-top: 8px;
+                .rate-star{
+                    margin-right: 8px;
+                    color: orangered;
+                    span{
+                        color: rgb(91, 148, 6);
+                    }
+                }
+                .nick_nane_left {
+                    display: flex;
+                    margin-left: 8px;
+                    .name {
+                        margin-left: 6px;
+                        h4 {
+                            font-weight: 500;
+                            margin-bottom: 0;
+                        }
+                        p{
+                            font-size: 11px;
+                        }
+                    }
+                }
+                img {
+                    height: 40px;
+                    width: 40px;
+                    border-radius: 50%;
+                }
+            }
+            .comment_here{
+                padding: 5px 8px;
+                img{
+                    opacity: 0.5;
+                }
+                .changecolor{
+                    img{
+                        opacity: 1!important;
+                    }
+                }
+            }
+        }
+    }
 }
 
-.modal-usercomment {
 
+.modal-usercomment {
     .modal-header {
         border-bottom: none;
         text-align: center;
         .star-rating {
             margin-left: 100px;
-            h1{
+            h1 {
                 color: green;
             }
-            h4{
+            h4 {
                 color: green;
                 font-weight: 700;
             }
@@ -175,15 +236,14 @@
         line-height: 4px;
     }
     .modal-body {
-        textarea{
+        textarea {
             width: 100%;
         }
-        form{
-            button{
+        form {
+            button {
                 margin-left: 200px;
             }
         }
-       
     }
 }
 

@@ -1,0 +1,59 @@
+<div class="theater__section" id="cumRapCuaTix">
+    <h1>Cụm rạp</h1>
+</div>
+
+<div class="theater container">
+    <div class="theater__list">
+        <div class="theater__logo">
+            <img src="assets/img/bhd.png" alt="" (click)="chooseTheaterSystem('BHDStar')"
+                (click)="chooseTheater('BHDStar')">
+        </div>
+        <div class="theater__logo">
+            <img src="assets/img/cinestar.png" alt="" (click)="chooseTheaterSystem('CineStar')"
+                (click)="chooseTheater('CineStar')">
+        </div>
+        <div class="theater__logo">
+            <img src="assets/img/404b8c4b80d77732e7426cdb7e24be20.png" alt=""
+                (click)="chooseTheaterSystem('LotteCinima')" (click)="chooseTheater('LotteCinima')">
+        </div>
+        <div class="theater__logo">
+            <img src="assets/img/megags.png" alt="" (click)="chooseTheaterSystem('MegaGS')"
+                (click)="chooseTheater('MegaGS')">
+        </div>
+        <div class="theater__logo">
+            <img src="assets/img/cgv.png" alt="" (click)="chooseTheaterSystem('CGV')" (click)="chooseTheater('CGV')">
+        </div>
+        <div class="theater__logo">
+            <img src="assets/img/galaxycine.png" alt="" (click)="chooseTheaterSystem('Galaxy')"
+                (click)="chooseTheater('Galaxy')">
+        </div>
+
+    </div>
+    <div class="theater__banner">
+        <div class="theater__name" *ngFor="let rap of theaterNameList" (click)="selectTheater(rap.maCumRap, rap.tenCumRap, rap.diaChi)">
+            <div class="theater__img">
+                <img src="assets/img/bhd-star-bitexco-16105952137769.png" alt="">
+            </div>
+            <div class="theater__info">
+                <h3>{{rap.tenCumRap}}</h3>
+                <p>{{rap.diaChi}}</p>
+                <a class="chiTiet">[Chi tiết]</a>
+            </div>
+
+        </div>
+    </div>
+    <div class="theater__movie">
+        <div class="movie__tittle" *ngFor="let movie of movieList">
+            <img [src]="movie.hinhAnh" alt="">
+            <div class="movie_info">
+                <h2>{{movie.tenPhim}}</h2>
+                <p>Có {{movie.lstLichChieuTheoPhim.length}} suất chiếu</p>
+                <div class="dinh-danh d-flex">
+                    <h1>2D</h1>
+                    <a (click)="xemChiTietLichChieu(movie.maPhim)">Xem chi tiết lịch chiếu</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,1 +1,89 @@
-<p>show-times works!</p>
+<div class="movieDetail container-fluid">
+    <div class="row">
+        <div class="movie-img col-4">
+            <img [src]="movieDetail.hinhAnh" alt="">
+
+        </div>
+        <div class="movie-info col-4">
+            <p>{{movieDetail.ngayKhoiChieu}}</p>
+            <span class="mr-4 c13">C13</span>
+            <span class="movie-name">{{movieDetail.tenPhim}}</span>
+            <p class="howlong">{{showtimes[0]?.thoiLuong}} phút</p>
+            <button mat-raised-button color="warn" class="muave">Mua vé</button>
+            <br>
+            <br>
+            <br>
+            <!-- <a class="trailer" [href]="movieDetail.trailer">
+                <span>
+                    <i class="material-icons">
+                        headset
+                    </i>
+                </span>
+                <span class="watch">Xem trailer</span>
+            </a> -->
+        </div>
+        <div class="star col-4">
+            <p>Đánh giá</p>
+            <h1>{{movieDetail.danhGia}}<i class="material-icons">
+                    star_rate
+                </i></h1>
+
+            <star-rating [value]="movieDetail.danhGia" [totalstars]="10" checkedcolor="red" uncheckedcolor="pink"
+                size="24px" [readonly]="false"></star-rating>
+        </div>
+    </div>
+
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="container showtimes">
+    <div class="dia_diem">
+        <img src="assets/img/bhd-star-bitexco-16105952137769.png" alt="">
+        <div class="theater__address">
+            <h2>{{rapDetail.tenCumRap}}</h2>
+            <p>Địa chỉ: {{rapDetail.diaChi}}</p>
+        </div>
+
+    </div>
+    <div class="schedule__movie d-flex">
+        <div class="theater__logo">
+            <img [src]="theaterLogo[0]?.logo" alt="">
+
+        </div>
+        <div class="theater__showtime">
+            <div class="setTime" *ngFor="let time of lichChieuPhim">
+                <h2>{{time.ngayChieuGioChieu.slice(0, 10)}}</h2>
+                <div class="book__time">
+                    <img [src]="movieDetail.hinhAnh" alt="">
+                    <div class="time">
+                        <h5>{{time.ngayChieuGioChieu.slice(11, 16)}}</h5>
+                        <button mat-stroked-button color="accent" (click)="datVe(movieDetail.maPhim, time.maLichChieu, time.giaVe, time.ngayChieuGioChieu)">Đặt vé</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</div>
+
+
+
+
+<div class="bg"></div>
+
+<div class="star-field">
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="layer"></div>

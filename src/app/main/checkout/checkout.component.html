@@ -1,1 +1,25 @@
-<app-theater></app-theater>
+<div class="checkout">
+    <h1 class="text-center mb-5">
+        Đặt vé nào!!!
+    </h1>
+
+    <div class="container">
+        <div class="row seat_item">
+            <div class="col-sm-6">
+                <app-listseat #listSeat (onSelect)="handleSelect($event)"></app-listseat>
+            </div>
+            <div class="col-sm-6">
+                <app-bookticket #listSeatBooked (onRemove)="handleRemove($event)"></app-bookticket>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="bg"></div>
+
+<div class="star-field">
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="layer"></div>

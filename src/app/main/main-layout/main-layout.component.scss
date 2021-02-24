@@ -1,6 +1,8 @@
 .header {
     background-color: rgba(77, 74, 74, 0.685)!important;
     font-size: 16px;
+    position: fixed;
+    z-index: 9999;
     .navbar-brand{
         padding: 0!important;
         img{

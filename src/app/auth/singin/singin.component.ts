@@ -31,9 +31,16 @@ export class SinginComponent implements OnInit {
 
     this.auth.signin(this.signinForm.value).subscribe({
       next: (result) => {
+        this.auth.currentUser.next(result);
+        //Lưu kết quả trả về vào local Storage
         localStorage.setItem("user", JSON.stringify(result));
-        this.router.navigateByUrl('/');
-        console.log(result)
+        const redirectUrl = (window as any).PATH
+        if (redirectUrl) {
+          (window as any).PATH = undefined;
+          this.router.navigateByUrl(redirectUrl)
+        } else {
+          this.router.navigateByUrl('/');
+        }
       },
       error: (error) => {
         this.errors= error

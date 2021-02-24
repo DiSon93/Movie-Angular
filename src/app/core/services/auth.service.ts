@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 import { SignupParams, SignupResult, SigninParams, SigninResult } from '../model/auth.model';
 
@@ -9,8 +9,15 @@ import { SignupParams, SignupResult, SigninParams, SigninResult } from '../model
   providedIn: 'root'
 })
 export class AuthService {
-
-  constructor(private http: HttpClient) { }
+  
+  currentUser = new BehaviorSubject<SigninResult | null> (null);
+  
+  constructor(private http: HttpClient) { 
+    const user = localStorage.getItem('user');
+    if(user) {
+      this.currentUser.next(JSON.parse(user));
+    }
+  }
 
   signup(value: SignupParams): Observable<SignupResult> {
     const url = "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangKy";
