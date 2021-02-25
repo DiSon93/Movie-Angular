@@ -1,10 +1,11 @@
 <button class="btn btn-secondary seat"
 [class]="{
-    'bg-danger': seat.isActive,
-    'bg-success': isSelect
+    'bg-danger': seat.daDat,
+    'bg-success': isSelect,
+    'bg-primary': seat.loaiGhe == 'Vip'
 }"
-[disabled] = "seat.isActive"
+[disabled] = "seat.daDat"
 (click) ="handleSelect()"
 >
-   {{ seat.name }}
+   {{ seat.tenGhe }}
 </button>

@@ -18,6 +18,7 @@ import { Router } from '@angular/router';
 export class ShowTimesComponent implements OnInit, OnDestroy {
 
   currentMovie: MovieSchedule[] = [];
+  thoiLuong: number = 0;
 
   theaterLogo: TheaterSystem | any = [];
   currentMovieSubscription?: Subscription;
@@ -83,6 +84,7 @@ export class ShowTimesComponent implements OnInit, OnDestroy {
             const { lichChieu, ...detail } = result;
             this.movieDetail = detail;
             this.showtimes = lichChieu;
+            this.thoiLuong = this.showtimes[0]?.thoiLuong;
             console.log(this.movieDetail)
             console.log(this.showtimes)
           },
@@ -114,8 +116,8 @@ export class ShowTimesComponent implements OnInit, OnDestroy {
     // unsubcrible currentUser
     this.currentMovieSubscription?.unsubscribe
   }
-  datVe(movieID: number, maLichChieu: number, giaVe: number, thoiGianChieu: string){
-    this.router.navigateByUrl(`/checkout/${movieID}/${maLichChieu}/${giaVe}/${thoiGianChieu}/${this.maHeThongRap}`)
+  datVe(movieID: number, maLichChieu: number, giaVe: number){
+    this.router.navigateByUrl(`/checkout/${maLichChieu}/${giaVe}/${this.thoiLuong}/${this.maHeThongRap}`)
   }
 
 

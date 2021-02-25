@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { TheaterService } from 'src/app/core/services/theater.service';
 import { MovieService } from 'src/app/core/services/movie.service';
 import { Movie, Showtimes } from 'src/app/core/model/movie.model';
-import { TheaterSystem, BookTicket, Seat } from 'src/app/core/model/theater.model';
+import { TheaterSystem, BookTicket, Seat, ThongTinPhim, DanhSachGhe } from 'src/app/core/model/theater.model';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Subscription } from 'rxjs';
 import { SigninResult } from 'src/app/core/model/auth.model';
@@ -17,15 +17,17 @@ export class BookticketComponent implements OnInit, OnDestroy {
   listSeat: any[] = [];
   // maLichChieu: number = 0;
   giaVe: number = 0;
-  movieDetail: Movie | any = {};
-  showtimes: Showtimes[] = [];
-  thoiGianChieu: string = '';
+
+    thongTinPhim : ThongTinPhim | any = {};
+    danhSachGhe : DanhSachGhe[] | any[] = []; 
+
+    thoiLuong: number = 0;
   theaterLogo: TheaterSystem | any = [];
   rapDetail: any = {
     tenCumRap: '',
     diaChi: ''
   }
-  price: number = 0;
+
   bookTicket : BookTicket | any = {
     maLichChieu: 0,
     danhSachVe: [ ],
@@ -39,6 +41,7 @@ export class BookticketComponent implements OnInit, OnDestroy {
 
 
   @Output() onRemove = new EventEmitter();
+  @Output() pushListSeat = new EventEmitter();
   constructor(
     private activatedRoute: ActivatedRoute,
     private movieService: MovieService,
@@ -50,17 +53,23 @@ export class BookticketComponent implements OnInit, OnDestroy {
     this.activatedRoute.params.subscribe({
       next: (params) => {
      this.bookTicket.maLichChieu = params.maLichChieu;
-     this.giaVe = params.giaVe;
-    //  this.bookTicket.danhSachVe.giaVe = params.giaVe;
-     this.thoiGianChieu = params.thoiGianChieu;
-     this.movieService.getMovieDetail(params.movieID).subscribe({
-       next: (result) => {
-         const {lichChieu, ...detail} = result;
-          this.movieDetail = detail;
-          this.showtimes = lichChieu;
-          console.log(this.showtimes)
-       }
-     })
+  
+     this.thoiLuong = params.thoiLuong;
+
+     this.theater.getDanhSachPhongVe(params.maLichChieu).subscribe({
+      next: (result) => {
+        console.log(result)
+        const {thongTinPhim, danhSachGhe} = result;
+         this.thongTinPhim = thongTinPhim;
+         this.danhSachGhe = danhSachGhe;
+        //  console.log(this.danhSachGhe)
+         console.log(this.thongTinPhim)
+         this.pushListSeat.emit(this.danhSachGhe)
+      },
+      error: (error) => {
+        console.log(error)
+      }
+    })
      this.theater.getTheaterSystem(params.maHeThongRap).subscribe({
       next: (result) => {
         this.theaterLogo = result;
@@ -70,20 +79,20 @@ export class BookticketComponent implements OnInit, OnDestroy {
 
       }
     });
-    this.theater.currentMovieAddress
-      .asObservable()
-      .subscribe({
-        next: (result) => {
-          this.rapDetail = result;
-          console.log(this.rapDetail)
+    // this.theater.currentMovieAddress
+    //   .asObservable()
+    //   .subscribe({
+    //     next: (result) => {
+    //       this.rapDetail = result;
+    //       console.log(this.rapDetail)
 
 
-        },
-        error: (error) => {
-          // this.errors= error
-          console.log(error);
-        },
-      });
+    //     },
+    //     error: (error) => {
+    //       // this.errors= error
+    //       console.log(error);
+    //     },
+    //   });
       this.currentUserSubscription = this.auth.currentUser
       .asObservable()
       .subscribe({
@@ -92,6 +101,8 @@ export class BookticketComponent implements OnInit, OnDestroy {
           this.bookTicket.taiKhoanNguoiDung = this.currentUser?.taiKhoan;
         },
       });
+
+     
      
   }
   ngOnDestroy(): void {
@@ -102,27 +113,27 @@ export class BookticketComponent implements OnInit, OnDestroy {
   handleSelect(seat: any){
     if(seat.isSelect){
       this.listSeat.push(seat);
-      console.log(seat)
-      this.ticketItem= {
-        maGhe : seat.id,
-        giaVe: this.giaVe
-      }
-      // this.danhSachVe.push(this.ticketItem)
-      this.bookTicket.danhSachVe.push(this.ticketItem)
-      console.log(this.bookTicket)
+      console.log(seat);
+      this.giaVe += seat.giaVe;
+      // this.ticketItem= {
+      //   maGhe : seat.maGhe,
+      //   giaVe: seat.giaVe
+      // }
+      // // this.danhSachVe.push(this.ticketItem)
+      // this.bookTicket.danhSachVe.push(this.ticketItem)
+      // console.log(this.bookTicket)
+      this.bookTicket.danhSachVe.push(seat)
     } 
     else {
       this.listSeat = this.listSeat.filter((item) => item.id !== seat.id);
+      this.giaVe -= seat.giaVe;
       this.ticketItem= {
-        maGhe : seat.id,
-        giaVe: this.giaVe
+        maGhe : seat.maGhe,
+        giaVe: seat.giaVe
       }
       this.bookTicket.danhSachVe = this.bookTicket.danhSachVe.filter((item : any) => item.maGhe !== this.ticketItem.maGhe)
       // this.listTicket = this.listTicket.filter((item => item.maGhe != seat.name)
     }
-    this.price = this.giaVe*this.listSeat.length;
-    // this.listTicket.
-
   }
   handleRemove(seatID: any){
         //B1: xóa ghế khỏi mảng
@@ -131,7 +142,7 @@ export class BookticketComponent implements OnInit, OnDestroy {
         //B2: Output  seatID lên component cha
         this.onRemove.emit(seatID)
   }
-  sendTicket(ticket: BookTicket){
+  sendTicket(ticket: any[]){
     this.theater.bookTicket(ticket).subscribe({
       next: (result) =>{
         console.log(result)

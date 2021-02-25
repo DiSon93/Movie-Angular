@@ -59,7 +59,7 @@
 <div class="tab-content" id="nav-tabContent">
     <div class="tab-pane fade show active" id="lichChieu" role="tabpanel" aria-labelledby="nav-home-tab">
         <app-banner></app-banner>
-        <app-show-times></app-show-times>
+        <!-- <app-show-times></app-show-times> -->
     </div>
     <div class="tab-pane fade thongTinPhim" id="thongTin" role="tabpanel" aria-labelledby="nav-profile-tab">
         <div class="movie-detail col-6">
@@ -317,22 +317,22 @@
         </div>
     </div>
 </div>
-<div *ngIf="!currentuser" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+<div *ngIf="!currentuser" class="modal fade cannotcomment" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog  modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Chưa đăng nhập bạn ơi</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                Không curentuser
+                Bạn cần phải đăng nhập để đánh giá bình luận
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
             </div>
         </div>
     </div>

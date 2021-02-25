@@ -3,13 +3,13 @@
         Đặt vé nào!!!
     </h1>
 
-    <div class="container">
-        <div class="row seat_item">
-            <div class="col-sm-6">
+    <div class="container-fluid">
+        <div class="seat_item">
+            <div class="seat_left">
                 <app-listseat #listSeat (onSelect)="handleSelect($event)"></app-listseat>
             </div>
-            <div class="col-sm-6">
-                <app-bookticket #listSeatBooked (onRemove)="handleRemove($event)"></app-bookticket>
+            <div class="seat_right">
+                <app-bookticket #listSeatBooked (pushListSeat)="handleListSeat($event)" (onRemove)="handleRemove($event)"></app-bookticket>
             </div>
         </div>
 

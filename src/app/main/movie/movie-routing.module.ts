@@ -5,9 +5,10 @@ import { MovieComponent } from './movie.component';
 import { ShowTimesComponent } from './show-times/show-times.component';
 
 const routes: Routes = [
+  {path: "", pathMatch: "full",  component: MovieComponent},
   {path: "banner", component: BannerComponent},
-  {path: "show-time/:maHeThongRapID", component: ShowTimesComponent},
-  {path: "", component: MovieComponent},
+  {path: "show-time/:maHeThongRapID",pathMatch: "full", component: ShowTimesComponent},
+ 
   // {path: "banner", component: BannerComponent}
 ];
 

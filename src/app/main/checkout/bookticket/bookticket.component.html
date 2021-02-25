@@ -14,30 +14,31 @@
 </span>
 </p> -->
 <div class="movie__ticket">
-    <img [src]="movieDetail.hinhAnh" alt="">
+    <img [src]="thongTinPhim.hinhAnh" alt="">
     <div class="movie_detail">
-        <h2>{{movieDetail.tenPhim}}</h2>
-        <p>{{showtimes[0]?.thoiLuong}} phút - 8.3IMDb</p>
+        <h2>{{thongTinPhim.tenPhim}}</h2>
+        <p>{{thoiLuong}} phút - 8.3IMDb</p>
         <div class="loaiPhim">
             <h1>2D</h1>
-            <span class="mr-2">Thời gian chiếu: </span><span class="time">{{thoiGianChieu}}</span>
+            <span class="mr-2">Ngày chiếu: </span><span class="time">{{thongTinPhim.ngayChieu}}</span>
+            <span class="mr-2">Giờ chiếu: </span><span class="time">{{thongTinPhim.gioChieu}}</span>
         </div>
     </div>
 </div>
 <div class="movie__theater">
     <img [src]="theaterLogo[0]?.logo" alt="">
     <div class="tenRap">
-        <h2>{{rapDetail.tenCumRap}}</h2>
-        <p>{{rapDetail.diaChi}}</p>
+        <h2>{{thongTinPhim.tenCumRap}}</h2>
+        <p>{{thongTinPhim.diaChi}}</p>
         <div class="seat">
-            <span class="mr-2">Ghế đã chọn: </span> <span class="seat_select" *ngFor="let seat of listSeat">{{seat.name}}</span>
+            <span class="mr-2">Ghế đã chọn: </span> <span class="seat_select" *ngFor="let seat of listSeat">{{seat.tenGhe}}</span>
         </div>
     </div>
 </div>
 <div class="thanhToan">
     <div class="count">
         <span class="mr-4">Tổng tiền:</span>
-        <span class="money">{{price}} (VNĐ)</span>
+        <span class="money">{{giaVe}} (VNĐ)</span>
     </div>
     <hr>
     <button mat-raised-button color="warn" (click)="sendTicket(bookTicket)">Thanh Toán</button>

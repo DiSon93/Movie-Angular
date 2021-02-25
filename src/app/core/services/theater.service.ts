@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TheaterSystem, Theater, TheaterDetail, CumRap, MovieSchedule, BookTicket} from '../model/theater.model';
+import { TheaterSystem, Theater, TheaterDetail, CumRap, MovieSchedule, BookTicket, DanhSachPhongVe, DanhSachRapTheoPhim} from '../model/theater.model';
 import { Observable, BehaviorSubject } from 'rxjs'
 import { HttpClient, HttpParams } from '@angular/common/http'
 
@@ -37,7 +37,20 @@ export class TheaterService {
     params = params.append('maHeThongRap', maHeThongRap);
     return this.http.get<CumRap>(url, { params })
   }
-  bookTicket(danhSachVe: BookTicket): Observable<any>{
+  getDanhSachPhongVe(value : string): Observable<DanhSachPhongVe>{
+    const url = 'https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe';
+    let params = new HttpParams();
+    params = params.append('MaLichChieu', value);
+    return this.http.get<DanhSachPhongVe>(url, { params })
+  }
+  getThongTinLichChieuTheoPhim(value : string): Observable<DanhSachRapTheoPhim>{
+    const url = 'https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuPhim';
+    let params = new HttpParams();
+    params = params.append('MaPhim', value);
+    return this.http.get<DanhSachRapTheoPhim>(url, { params })
+  }
+  // getDanhSachPhongVe()
+  bookTicket(danhSachVe: any[]): Observable<any>{
     const url = 'https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/DatVe';
     return this.http.post<any>(url, danhSachVe)
   }

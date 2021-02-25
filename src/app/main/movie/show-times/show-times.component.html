@@ -8,7 +8,7 @@
             <p>{{movieDetail.ngayKhoiChieu}}</p>
             <span class="mr-4 c13">C13</span>
             <span class="movie-name">{{movieDetail.tenPhim}}</span>
-            <p class="howlong">{{showtimes[0]?.thoiLuong}} phút</p>
+            <p class="howlong">{{thoiLuong}} phút</p>
             <button mat-raised-button color="warn" class="muave">Mua vé</button>
             <br>
             <br>
@@ -65,7 +65,7 @@
                     <img [src]="movieDetail.hinhAnh" alt="">
                     <div class="time">
                         <h5>{{time.ngayChieuGioChieu.slice(11, 16)}}</h5>
-                        <button mat-stroked-button color="accent" (click)="datVe(movieDetail.maPhim, time.maLichChieu, time.giaVe, time.ngayChieuGioChieu)">Đặt vé</button>
+                        <button mat-stroked-button color="accent" (click)="datVe(movieDetail.maPhim, time.maLichChieu, time.giaVe)">Đặt vé</button>
                     </div>
                 </div>
             </div>

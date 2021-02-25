@@ -20,5 +20,8 @@ export class CheckoutComponent implements OnInit {
   handleRemove(seatID: any){
     this.listseatComponent.handleRemove(seatID)
   }
-
+  handleListSeat(seat: any){
+    // console.log(seat);
+     this.listseatComponent.handleListSeat(seat)
+  }
 }

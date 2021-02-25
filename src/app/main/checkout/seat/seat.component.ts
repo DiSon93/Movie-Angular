@@ -17,6 +17,6 @@ export class SeatComponent implements OnInit {
   handleSelect(){
     this.isSelect = !this.isSelect;
     this.onSelect.emit({...this.seat, isSelect : this.isSelect })
-    console.log(this.seat.name)
+    // console.log(this.seat.name)
   }
 }

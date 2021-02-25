@@ -3,6 +3,17 @@
     padding-top: 90px;
     padding-bottom: 50px;
 }
+.seat_item{
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+    .seat_left{
+        width: 55%;
+    }
+    .seat_right{
+        width: 45%;
+    }
+}
 
 
 //BACKGROUND

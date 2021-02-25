@@ -15,7 +15,7 @@ const routes: Routes = [
   {
     path: "", component: MainLayoutComponent,
     children: [
-      { path: "checkout/:movieID/:maLichChieu/:giaVe/:thoiGianChieu/:maHeThongRap", loadChildren: () => CheckoutModule },
+      { path: "checkout/:maLichChieu/:giaVe/:thoiLuong/:maHeThongRap", canActivate: [BookmovieGuard], loadChildren: () => CheckoutModule },
       { path: "", pathMatch: "full", loadChildren: () => HomeModule },
       { path: "movie/:movieID", loadChildren: () => MovieModule },
     ]
