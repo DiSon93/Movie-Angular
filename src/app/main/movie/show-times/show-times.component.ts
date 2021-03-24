@@ -34,13 +34,14 @@ export class ShowTimesComponent implements OnInit, OnDestroy {
   lichChieuPhim: MovieSheduleList | any = [];
   maHeThongRap: string = '';
 
-
+  
   constructor(
     private movieService: MovieService,
     private activateRoute: ActivatedRoute,
     private router: Router,
     private theater: TheaterService
-  ) { }
+  ) {
+   }
 
   ngOnInit(): void {
 
@@ -58,6 +59,11 @@ export class ShowTimesComponent implements OnInit, OnDestroy {
           console.log(error);
         },
       });
+      this.activateRoute.queryParams.subscribe({
+        next: (result) => {
+          console.log(result)
+        }
+      })
     this.theater.currentMovieAddress
       .asObservable()
       .subscribe({

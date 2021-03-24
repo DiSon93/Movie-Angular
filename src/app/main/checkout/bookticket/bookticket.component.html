@@ -43,3 +43,33 @@
     <hr>
     <button mat-raised-button color="warn" (click)="sendTicket(bookTicket)">Thanh Toán</button>
 </div>
+
+
+<div class="modal-succcess">
+    <div class="text-center">
+        <!-- Button HTML (to Trigger Modal) -->
+        <a #myDiv href="#myModal" class="trigger-btn" data-toggle="modal" id="modal-trigger">Click to Open Confirm Modal</a>
+    </div>
+    
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal fade"> 
+        <div class="modal-dialog modal-confirm modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="icon-box">
+                        <i class="material-icons">offline_pin</i>
+                    </div>				
+                    <h4 class="modal-title">Awesome!</h4>	
+                </div>
+
+                <div class="modal-body">
+                    <p class="text-center">Chúc mừng bạn đã đặt vé thành công</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success btn-block" data-dismiss="modal" routerLink="/" >OK</button>
+                </div>
+             
+            </div>
+        </div>
+    </div>    
+</div>

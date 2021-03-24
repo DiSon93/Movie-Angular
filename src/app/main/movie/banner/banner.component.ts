@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TheaterService } from 'src/app/core/services/theater.service';
-import { Theater, TheaterDetail, HeThongRapChieu, CumRap, CumRapChieu , MovieTheater, MovieSchedule, DanhSachRapTheoPhim, Movie } from '../../../core/model/theater.model';
+import { Theater, TheaterDetail, HeThongRapChieu, CumRap, CumRapChieu, MovieTheater, MovieSchedule, DanhSachRapTheoPhim, Movie } from '../../../core/model/theater.model';
 import { Router, ActivatedRoute } from '@angular/router'
 @Component({
   selector: 'app-banner',
@@ -16,37 +16,38 @@ export class BannerComponent implements OnInit {
   movieListSelect: MovieTheater[] = [];
   movieList: MovieSchedule[] = [];
   maCumRapID: string = '';
-  maHeThongRapID: string = 'BHDStar';
-  tenCumRapID: string ='';
+  maHeThongRapID: string = '';
+  tenCumRapID: string = '';
   diaChiID: string = '';
   rapDetail: any = {
-     tenCumRap: '',
-     diaChi: ''
+    tenCumRap: '',
+    diaChi: ''
   }
+  timeList: any = [];
   movieTheater: HeThongRapChieu[] | any[] = [];
   movieDetail: DanhSachRapTheoPhim | any = {};
   cumRapChieu: CumRapChieu[] | any = [];
   constructor(private theater: TheaterService,
     private router: Router,
-    private activateRoute : ActivatedRoute
+    private activateRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    
-   
+
+
     this.activateRoute.params.subscribe({
       next: (params) => {
         console.log(params)
         this.theater.getThongTinLichChieuTheoPhim(params.movieID).subscribe({
           next: (result) => {
             this.movieDetail = result;
-            this.movieTheater =  this.movieDetail.heThongRapChieu;
-           
+            this.movieTheater = this.movieDetail.heThongRapChieu;
+
             console.log(this.movieDetail)
             console.log(this.movieTheater)
             this.chooseTheaterSystem(this.movieTheater[0].maHeThongRap);
             this.chooseTheater(this.movieTheater[0].maHeThongRap);
-        
+
           },
           error: (error) => {
             console.log(error);
@@ -54,7 +55,7 @@ export class BannerComponent implements OnInit {
         });
       }
     });
-   
+
   }
   chooseTheaterSystem(maHeThongRap: string) {
     this.maHeThongRapID = maHeThongRap;
@@ -63,11 +64,11 @@ export class BannerComponent implements OnInit {
         console.log(result);
         // const {theaterList} = result;
         this.theaterNameList = result;
-      //   for(let i =0; i < this.movieTheater.length; i++){
-      //      for(let j =0; j< this.theaterNameList.length; i++){
-      //  this.list = this.theaterNameList.filter(item => item.maCumRap == this.movieTheater[i].)
-      //      }
-      //   }
+        //   for(let i =0; i < this.movieTheater.length; i++){
+        //      for(let j =0; j< this.theaterNameList.length; i++){
+        //  this.list = this.theaterNameList.filter(item => item.maCumRap == this.movieTheater[i].)
+        //      }
+        //   }
       },
       error: (error) => {
         console.log(error);
@@ -87,19 +88,26 @@ export class BannerComponent implements OnInit {
       }
     })
   }
-  selectTheater(maCumRap: string, tenCumRap: string, diaChi: string) {
+  selectTheater(lichChieu: string, maHeThongRap: string) {
     // console.log(tenCumTap);
-    this.maCumRapID = maCumRap;
-    this.rapDetail.tenCumRap = tenCumRap,
-    this.rapDetail.diaChi = diaChi;
-    this.theater.currentMovieAddress.next(this.rapDetail);
-    this.movieListSelect = this.movieOfTheater.filter(item => item.maCumRap == maCumRap);
-    console.log(this.movieListSelect)
-    this.movieList = this.movieListSelect[0].danhSachPhim;
-    this.theater.currentMovie.next(this.movieList);
-    console.log(this.movieList)
+    // this.maCumRapID = maCumRap;
+    // this.rapDetail.tenCumRap = tenCumRap,
+    // this.rapDetail.diaChi = diaChi;
+    // this.theater.currentMovieAddress.next(this.rapDetail);
+    // this.movieListSelect = this.movieOfTheater.filter(item => item.maCumRap == maCumRap);
+    // console.log(this.movieListSelect)
+    // this.movieList = this.movieListSelect[0].danhSachPhim;
+    // this.theater.currentMovie.next(this.movieList);
+    // console.log(this.movieList)
+    console.log(lichChieu);
+    this.timeList = lichChieu;
+    this.maHeThongRapID = maHeThongRap;
   }
   xemChiTietLichChieu(movieID: number) {
     this.router.navigateByUrl(`/movie/${movieID}/show-time/${this.maHeThongRapID}`)
   }
+  datVe(movieID: number, maLichChieu: number, giaVe: number, thoiLuong: number){
+    this.router.navigateByUrl(`/checkout/${maLichChieu}/${giaVe}/${thoiLuong}/${this.maHeThongRapID}`)
+  }
+
 }

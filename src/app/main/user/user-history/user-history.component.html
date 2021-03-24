@@ -1,0 +1,91 @@
+<div class="user__history">
+    <!-- <div class="table">
+        <table id="example" class="table table-striped">
+            <thead>
+                <tr>
+                     <th class="item_moive">Mã vé</th>
+                     <th class="item_moive">Tên phim</th>
+                     <th class="item_moive">Ngày đặt</th>
+                     <th class="item_moive">Giá vé</th>
+                     <th class="item_moive">Thời lượng</th>
+                     <th class="item_moive">Danh sách ghế đặt</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ve of thongTinDatVe">
+                    <td>{{ve.maVe}}</td>
+                    <td>{{ve.tenPhim}}</td>
+                    <td>{{ve.ngayDat}}</td>
+                    <td>{{ve.giaVe}}</td>
+                    <td>{{ve.thoiLuongPhim}}</td>
+                    <td>
+                        <div class="ghe_da_dat" *ngFor="let ghe of ve.danhSachGhe"> 
+                            <p>Rạp: {{ghe.tenHeThongRap}}</p>
+                            <p>Ghế: {{ghe.tenGhe}}</p>
+                            <hr>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div> -->
+
+
+
+
+
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title datVe_history">Lịch sử đặt vé</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                  <tr>
+                    <th class="item_moive">Mã vé</th>
+                    <th class="item_moive">Tên phim</th>
+                    <th class="item_moive">Ngày đặt</th>
+                    <th class="item_moive">Giá vé</th>
+                    <th class="item_moive">Thời lượng</th>
+                    <th class="item_moive">Danh sách ghế đặt</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let ve of thongTinDatVe">
+                        <td>{{ve.maVe}}</td>
+                        <td>{{ve.tenPhim}}</td>
+                        <td>{{ve.ngayDat}}</td>
+                        <td>{{ve.giaVe}}</td>
+                        <td>{{ve.thoiLuongPhim}}</td>
+                        <td>
+                            <div class="ghe_da_dat" *ngFor="let ghe of ve.danhSachGhe"> 
+                                <p>Rạp: {{ghe.tenHeThongRap}}</p>
+                                <p>Ghế: {{ghe.tenGhe}}</p>
+                                <hr>
+                            </div>
+                        </td>
+                    </tr>
+           
+                  </tbody>
+                  
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+           
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+
+</div>
+
+

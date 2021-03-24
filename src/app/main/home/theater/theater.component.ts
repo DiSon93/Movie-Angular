@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TheaterService } from 'src/app/core/services/theater.service';
 import { Theater, TheaterDetail, CumRap, MovieTheater, MovieSchedule } from '../../../core/model/theater.model';
-import { Router } from '@angular/router'
+import { Router, NavigationExtras } from '@angular/router'
 
 @Component({
   selector: 'app-theater',
@@ -17,11 +17,11 @@ export class TheaterComponent implements OnInit {
   movieList: MovieSchedule[] = [];
   maCumRapID: string = '';
   maHeThongRapID: string = 'BHDStar';
-  tenCumRapID: string ='';
+  tenCumRapID: string = '';
   diaChiID: string = '';
   rapDetail: any = {
-     tenCumRap: '',
-     diaChi: ''
+    tenCumRap: '',
+    diaChi: ''
   }
 
   constructor(private theater: TheaterService,
@@ -63,7 +63,7 @@ export class TheaterComponent implements OnInit {
     // console.log(tenCumTap);
     this.maCumRapID = maCumRap;
     this.rapDetail.tenCumRap = tenCumRap,
-    this.rapDetail.diaChi = diaChi;
+      this.rapDetail.diaChi = diaChi;
     this.theater.currentMovieAddress.next(this.rapDetail);
     this.movieListSelect = this.movieOfTheater.filter(item => item.maCumRap == maCumRap);
     console.log(this.movieListSelect)
@@ -72,7 +72,11 @@ export class TheaterComponent implements OnInit {
     console.log(this.movieList)
   }
   xemChiTietLichChieu(movieID: number) {
-    this.router.navigateByUrl(`/movie/${movieID}/show-time/${this.maHeThongRapID}`)
+    let navigationExtras: NavigationExtras = {
+      queryParams: this.rapDetail
+    };
+    // console.log(navigationExtras.queryParams)
+    this.router.navigateByUrl(`/movie/${movieID}/show-time/${this.maHeThongRapID}`,navigationExtras )
   }
 
 }

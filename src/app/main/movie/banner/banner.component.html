@@ -8,27 +8,31 @@
 
     </div>
     <div class="theater__banner">
-        <div class="theater__name" *ngFor="let rap of theaterNameList" (click)="selectTheater(rap.maCumRap, rap.tenCumRap, rap.diaChi)">
-            <div class="theater__img">
-                <img src="assets/img/bhd-star-bitexco-16105952137769.png" alt="">
+        <div class="theater__names" *ngFor="let theater of movieTheater">
+            <div class="theater__name"  *ngFor="let rap of theater.cumRapChieu"  (click)="selectTheater(rap.lichChieuPhim, theater.maHeThongRap)">
+                <div class="theater__img">
+                    <img src="assets/img/bhd-star-bitexco-16105952137769.png" alt="">
+                </div>
+                <div class="theater__info">
+                    <h3>{{rap.tenCumRap}}</h3>
+                    <!-- <p>{{rap.diaChi}}</p> -->
+                    <p>Địa chỉ: 23/12, đường Nguyễn Văn Trỗi, phường 12, quận Phú Nhuận, TP Hồ Chí Minh</p>
+                    <a class="chiTiet">[Chi tiết]</a>
+                </div>
             </div>
-            <div class="theater__info">
-                <h3>{{rap.tenCumRap}}</h3>
-                <p>{{rap.diaChi}}</p>
-                <a class="chiTiet">[Chi tiết]</a>
-            </div>
-
+ 
+           
         </div>
     </div>
     <div class="theater__movie">
-        <div class="movie__tittle" *ngFor="let movie of movieList">
+        <div class="movie__tittle" *ngFor="let time of timeList">
             <img [src]="movieDetail.hinhAnh" alt="">
             <div class="movie_info">
-                <h2>{{movie.tenPhim}}</h2>
-                <p>Có {{movie.lstLichChieuTheoPhim.length}} suất chiếu</p>
+                <h2>{{time.tenRap}}</h2>
+                <p>Suất chiếu: {{time.ngayChieuGioChieu}}</p>
                 <div class="dinh-danh d-flex">
                     <h1>2D</h1>
-                    <a (click)="xemChiTietLichChieu(movie.maPhim)">Xem chi tiết lịch chiếu</a>
+                    <button mat-stroked-button color="accent" (click)="datVe(movieDetail.maPhim, time.maLichChieu, time.giaVe, time.thoiLuong)">Đặt vé</button>
                 </div>
 
             </div>

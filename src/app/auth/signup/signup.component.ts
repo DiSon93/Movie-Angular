@@ -31,9 +31,10 @@ export class SignupComponent implements OnInit {
     next: (result) => {
       // alert("Chúc mừng bạn đã đăng ký thành công");
       // (<HTML>document.getElementsByClassName("trigger-btn")).onClick('show');
-      this.modal = true;
-      (<HTMLElement>document.getElementById('modal-trigger')).click()
-      this.router.navigateByUrl('/signin');
+      // this.modal = true;
+      let element: HTMLElement | null = document.getElementById('modal-trigger');
+        element?.click();
+      // this.router.navigateByUrl('/signin');
       console.log(result)
     },
     error: (error) => {

@@ -84,6 +84,17 @@
                     font-weight: 500;
                 }
                 .dinh-danh{
+                   
+                    button{
+                        margin-left: 30px;
+                        margin-bottom: 10px;
+                        border: 2px solid rgb(238, 62, 92);
+                        font-size: 16px;
+                        &:hover{
+                            background-color: white;
+                            transition: 0.5s;
+                        }
+                    }
                     h1{
                         color: rgb(104, 170, 6);
                         font-weight: 700;

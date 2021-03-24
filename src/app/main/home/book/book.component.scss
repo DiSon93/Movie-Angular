@@ -18,10 +18,20 @@
         .movie {
             width: 300px;
         }
-        .theater,
-        .daylist,
-        .showntime {
-            width: 180px;
-        }
+     
+            .theater,
+            .daylist,
+            .showntime {
+                width: 180px;
+            }
+            .theater{
+                height: 40px;
+                margin: 20px 0;
+            }
+            .movie_name{
+                width: 240px;
+            }
+        
+    
     }
 }

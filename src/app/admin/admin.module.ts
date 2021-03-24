@@ -14,8 +14,9 @@ import { MatListModule } from '@angular/material/list';
 
 
 
+
 @NgModule({
-  declarations: [AdminLayoutComponent],
+  declarations: [AdminLayoutComponent,],
   imports: [
     CommonModule,
     AdminRoutingModule,

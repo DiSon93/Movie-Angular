@@ -1,0 +1,40 @@
+<div class="user_detail" style="background-image: url('assets/img/bg2.jpg');">
+    <div class="user_basic">
+        <hr>
+        <div class="user_img">
+            <img src="assets/img/comment0.jpg" alt="">
+        </div>
+
+        <hr>
+        <h2>{{userDetail.hoTen}}</h2>
+        <div class="user__info">
+            <span class="tittle">Tài khoản: </span><span class="user_value">{{userDetail.taiKhoan}}</span> <br>
+            <span class="tittle">Email: </span><span class="user_value">{{userDetail.email}}</span> <br>
+            <span class="tittle">Số điện thoại: </span><span class="user_value">{{userDetail.soDT}}</span> <br>
+            <span class="tittle">Mã nhóm: </span><span class="user_value">{{userDetail.maNhom}}</span> <br>
+        </div>
+
+
+        <hr>
+        <h2>Setting</h2>
+        <div class="choice">
+           
+            <a href="/user/update">Chỉnh sửa thông tin cá nhân</a> <i class="material-icons text-right">
+                miscellaneous_services
+                </i><br>
+            <a routerLink="/user/history">Lịch sử đặt vé</a><span class="material-icons">
+                local_offer
+                </span> <br>
+            <a href="/" (click)="logOut()" >Đăng xuất</a>
+        </div>
+
+
+    </div>
+    <div class="user__content">
+       <h1>Chào mừng bạn đến với thế giới TIX</h1>
+        <router-outlet></router-outlet>
+
+      
+        
+    </div>
+</div>

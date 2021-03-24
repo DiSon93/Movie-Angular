@@ -1,1 +1,173 @@
-<p>add-user works!</p>
+
+<div class="container-fluid user_add">
+    <h1 style="text-align: center">Form thêm người dùng</h1>
+
+    <form  [formGroup]="addUserForm"  class="form-container" (ngSubmit)="handleUpdate()">
+        <!-- tài khoản  -->
+       
+        <mat-form-field appearance="fill">
+            
+            <mat-label>Tài khoản</mat-label>
+            <input matInput formControlName="taiKhoan">
+            <mat-icon matSuffix>
+                <span class="material-icons">
+                    assignment_ind
+                    </span>
+            </mat-icon>
+            
+            <mat-error *ngIf="addUserForm.get('taiKhoan')?.invalid">
+                <span *ngIf="addUserForm.get('taiKhoan')?.errors?.required">
+                    Tài khoản không được để trống
+                </span>
+                <span *ngIf="addUserForm.get('taiKhoan')?.errors?.minlength || addUserForm.get('taiKhoan')?.errors?.maxlength">
+                    Tài khoản phải từ 3 đến 20 kí tự
+                </span>
+            </mat-error>
+            <!-- <pre>{{taiKhoan.errors | json}}</pre> -->
+            <!-- <div *ngIf="taiKhoan.invalid && (taiKhoan.dirty || taiKhoan.touched)">
+                Tài khoản không được bỏ trống
+            </div> -->
+        </mat-form-field>
+        <!-- mật khẩu  -->
+        
+        <mat-form-field appearance="fill">
+                <mat-label>Mật Khẩu</mat-label>
+                <input type="password" matInput formControlName="matKhau">
+                <mat-icon matSuffix>
+                    <span class="material-icons">
+                        lock
+                        </span>
+                </mat-icon>
+                <mat-error *ngIf="addUserForm.get('matKhau')?.invalid">
+                    <span *ngIf="addUserForm.get('matKhau')?.errors?.required">
+                        Mật khẩu không được để trống
+                    </span>
+                    <span *ngIf="addUserForm.get('matKhau')?.errors?.minlength">
+                        Mật khẩu phải lớn hơn 3 ký tự
+                    </span>
+        
+                </mat-error>
+        </mat-form-field>
+    
+        <!-- Email  -->
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email"/>
+            <mat-icon matSuffix> 
+                <span class="material-icons">
+                    email
+                    </span>
+            </mat-icon>      
+            <mat-error *ngIf="addUserForm.get('email')?.invalid">
+                <span *ngIf="addUserForm.get('email')?.errors?.required">
+                    Email không được để trống
+                </span>
+                <span *ngIf="addUserForm.get('email')?.errors?.pattern">
+                    Email không đúng định dạng
+                </span>
+    
+            </mat-error>
+        </mat-form-field>
+    
+        <!-- họ Tên  -->
+        <mat-form-field appearance="fill">
+            <mat-label>Họ tên</mat-label>
+            <input matInput formControlName="hoTen">
+            <mat-icon matSuffix>
+                <span class="material-icons">
+                    face
+                    </span>
+            </mat-icon>
+            <mat-error *ngIf="addUserForm.get('hoTen')?.invalid">
+                <span *ngIf="addUserForm.get('hoTen')?.errors?.required">
+                    Họ tên không được để trống
+                </span>
+    
+            </mat-error>
+        </mat-form-field>
+    
+        <!-- Số điện thoại  -->
+        <mat-form-field appearance="fill">
+            <mat-label>Số điện thoại</mat-label>
+            <input matInput formControlName="soDt" >
+            <mat-icon matSuffix>
+                <span class="material-icons">
+                    perm_phone_msg
+                    </span>
+            </mat-icon>
+            <mat-error *ngIf="addUserForm.get('soDt')?.invalid">
+                <span *ngIf="addUserForm.get('soDt')?.errors?.required">
+                    Số điện thoại không được để trống
+                </span>
+                
+            </mat-error>
+        </mat-form-field>
+
+        <!-- <mat-form-field appearance="fill">
+            <mat-label>Mã loại người dùng</mat-label>
+            <input matInput formControlName="maLoaiNguoiDung">
+            <mat-icon matSuffix>
+                <span class="material-icons">
+                    face
+                    </span>
+            </mat-icon>
+            <mat-error *ngIf="addUserForm.get('maLoaiNguoiDung')?.invalid">
+                <span *ngIf="addUserForm.get('maLoaiNguoiDung')?.errors?.required">
+                    Họ tên không được để trống
+                </span>
+    
+            </mat-error>
+        </mat-form-field> -->
+
+        <mat-form-field appearance="fill">
+            <mat-label>Mã loại người dùng</mat-label>
+            <mat-select formControlName="maLoaiNguoiDung">
+              <mat-option value="QuanTri">QuanTri</mat-option>
+              <mat-option value="KhachHang">KhachHang</mat-option>
+            </mat-select>
+           
+            <mat-error *ngIf="addUserForm.get('maLoaiNguoiDung')?.invalid">
+                <span *ngIf="addUserForm.get('maLoaiNguoiDung')?.errors?.required">
+                    Mã loại người dùng không được để trống
+                </span>
+    
+            </mat-error>
+          </mat-form-field>
+
+    
+        <!-- <button [disabled]="signupForm.invalid">Submit</button> -->
+        <button mat-raised-button color="accent" >Thêm</button>
+        <p *ngIf="errors" class="alert alert-danger" >
+            {{errors?.error}}
+        </p>
+    </form>
+</div>
+
+<div class="modal-succcess">
+    <div class="text-center">
+        <!-- Button HTML (to Trigger Modal) -->
+        <a #myDiv href="#myModal" class="trigger-btn" data-toggle="modal" id="modal-trigger">Click to Open Confirm Modal</a>
+    </div>
+    
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal fade"> 
+        <div class="modal-dialog modal-confirm modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="icon-box">
+                        <i class="material-icons">offline_pin</i>
+                    </div>				
+                    <h4 class="modal-title">Awesome!</h4>	
+                </div>
+
+                <div class="modal-body">
+                    <p class="text-center">Chúc mừng bạn đã thêm người dùng thành công</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success btn-block" data-dismiss="modal" routerLink="/admin/users" >OK</button>
+                </div>
+             
+            </div>
+        </div>
+    </div>    
+</div>

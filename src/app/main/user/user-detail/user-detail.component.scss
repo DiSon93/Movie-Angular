@@ -1,0 +1,78 @@
+.user_detail {
+    display: flex;
+    color: white;
+    padding-top: 56px;
+  
+    .user_basic {
+        background-color: rgb(35, 11, 56);
+        padding-bottom: 50px;
+        width: 30%;
+        .user_img {
+            display: flex;
+            justify-content: center;
+            img {
+                margin: 0 auto;
+                text-align: center;
+                border-radius: 50%;
+                
+            }
+        }
+        .user__info {
+            margin-left: 40px;
+        }
+        hr {
+            background-color: white;
+        }
+        h2 {
+            background: linear-gradient(to right, black, white);
+            text-align: center;
+        }
+        .choice {
+            margin-left: 40px;
+            display: block;
+            a {
+                color: white;
+                line-height: 60px;
+                &:hover {
+                    color: #e42141;
+                    text-decoration: none;
+                }
+                margin-bottom: 20px;
+            }
+        }
+        .tittle {
+            margin-left: 5px;
+            line-height: 60px;
+        }
+        .user_value {
+            color: coral;
+        }
+    }
+    .user__content {
+        width: 70%;
+        h1 {
+            // animation: upDown 1s linear 0s infinite;
+            text-align: center;
+            margin-top: 30px;
+          
+          }
+    }
+}
+@keyframes upDown{
+    /* 1 chu kì/ 1 lần chuyển động */
+    /* 100s */
+    0%{}
+    25%{
+        transform:translateY(-50px) scale(1.2)
+
+    }
+    50%{
+        transform: translateY(0);scale: 1;
+    }
+    75%{
+        transform: translateY(50px); scale: 1.2;
+    }
+    100%{
+        transform: translateY(0); scale: 1;
+    }
+}

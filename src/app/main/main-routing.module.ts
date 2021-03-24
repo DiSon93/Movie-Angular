@@ -6,11 +6,9 @@ import { HomeModule } from './home/home.module';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { MovieModule } from './movie/movie.module';
 import { BookmovieGuard } from '../core/guards/bookmovie.guard'
+import { UserModule } from './user/user.module';
 
 const routes: Routes = [
-  //pathMatch: " full" => kiểm tra path phải khớp 100%
-
-  
 
   {
     path: "", component: MainLayoutComponent,
@@ -18,6 +16,7 @@ const routes: Routes = [
       { path: "checkout/:maLichChieu/:giaVe/:thoiLuong/:maHeThongRap", canActivate: [BookmovieGuard], loadChildren: () => CheckoutModule },
       { path: "", pathMatch: "full", loadChildren: () => HomeModule },
       { path: "movie/:movieID", loadChildren: () => MovieModule },
+      {path: "user", loadChildren:() => UserModule}
     ]
   }
 

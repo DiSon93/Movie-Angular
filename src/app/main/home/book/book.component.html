@@ -1,6 +1,6 @@
 <div class="book-detail">
     <div class="book-tittle">
-        <div class="dropdown open">
+        <!-- <div class="dropdown open">
             <div class="btn btn-secondary dropdown-toggle book-show movie" type="button" id="triggerId"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Phim
@@ -9,9 +9,61 @@
                 <a class="dropdown-item" href="#">Action</a>
                 <a class="dropdown-item disabled" href="#">Disabled action</a>
             </div>
+        </div> -->
+        <div class="movie_select">
+            <select name="" id="chonTenPhim" class="theater movie_name" [(ngModel)]="movieID">
+                <option value="">Tên Phim</option>
+                <ng-container *ngFor="let movie of movieList">
+                    <option [value]="movie.maPhim">{{movie.tenPhim}}</option>
+                </ng-container>
+                <!-- <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option> -->
+            </select>
+    
         </div>
+        <div class="movie_select">
+            <select name="" id="" class="theater" (input) = "changeUserName($event)">
+                <option value="">Rạp</option>
+                <ng-container *ngFor="let rap of rapList.heThongRapChieu">
+                <ng-container *ngFor="let cumRap of rap.cumRapChieu">
+                    <option [value]="cumRap.lichChieuPhim">{{cumRap.tenCumRap}}</option>
+                </ng-container>
 
-        <div class="dropdown open">
+                </ng-container>
+                <!-- <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option> -->
+            </select>
+    
+        </div>
+        <div class="movie_select">
+            <select name="" id="" class="theater" (click)="chonNgayXem()" >
+                <option value="">Ngày xem</option>
+                <!-- <ng-container *ngFor="let time of lichChieuPhim">
+                    <option [value]="time.maRap">{{time.ngayChieuGioChieu}}</option>
+                </ng-container> -->
+                <!-- <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option> -->
+            </select>
+    
+        </div>
+        <div class="movie_select">
+            <select name="" id="" class="theater">
+                <option value="">Suất chiếu</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+    
+        </div>
+        
+        <!-- <div class="dropdown open">
             <div class="btn btn-secondary dropdown-toggle theater book-show" type="button" id="triggerId"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Rạp
@@ -41,11 +93,12 @@
                 <a class="dropdown-item" href="#">Action</a>
                 <a class="dropdown-item disabled" href="#">Disabled action</a>
             </div>
-        </div>
+        </div> -->
 
         <div class="book-button book-show">
             <button mat-raised-button color="accent">Mua vé ngay</button>
         </div>
-      
+
     </div>
+    <button class="btn btn-primary"  (click)="chonRap()">Chọn Rạp</button>
 </div>

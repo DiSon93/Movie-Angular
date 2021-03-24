@@ -1,1 +1,233 @@
-<p>update-movie works!</p>
+<div class="container-fluid user_update">
+    <h1 style="text-align: center">Form cập nhập thông tin phim</h1>
+
+    <form [formGroup]="updateMovieForm" class="form-container" (ngSubmit)="handleUpdate()">
+        <!-- tài khoản  -->
+
+        <mat-form-field appearance="fill">
+
+            <mat-label>Mã Phim</mat-label>
+            <input matInput formControlName="maPhim">
+            <mat-icon matSuffix>
+                <span class="material-icons">
+                    assignment_ind
+                </span>
+            </mat-icon>
+
+            <mat-error *ngIf="updateMovieForm.get('maPhim')?.invalid">
+                <span *ngIf="updateMovieForm.get('maPhim')?.errors?.required">
+                    Mã phim không được để trống
+                </span>
+                <span
+                    *ngIf="updateMovieForm.get('maPhim')?.errors?.minlength || updateMovieForm.get('maPhim')?.errors?.maxlength">
+                    Mã phim phải từ 3 đến 20 kí tự
+                </span>
+            </mat-error>
+            <!-- <pre>{{taiKhoan.errors | json}}</pre> -->
+            <!-- <div *ngIf="taiKhoan.invalid && (taiKhoan.dirty || taiKhoan.touched)">
+                Tài khoản không được bỏ trống
+            </div> -->
+        </mat-form-field>
+        <!-- mật khẩu  -->
+
+        <mat-form-field appearance="fill">
+            <mat-label>Tên Phim</mat-label>
+            <input matInput formControlName="tenPhim">
+            <mat-icon matSuffix>
+                <span class="material-icons">
+                    lock
+                </span>
+            </mat-icon>
+            <mat-error *ngIf="updateMovieForm.get('tenPhim')?.invalid">
+                <span *ngIf="updateMovieForm.get('tenPhim')?.errors?.required">
+                    Tên phim không được để trống
+                </span>
+                <span *ngIf="updateMovieForm.get('tenPhim')?.errors?.minlength">
+                    Tên phim phải lớn hơn 3 ký tự
+                </span>
+
+            </mat-error>
+        </mat-form-field>
+
+        <!-- Email  -->
+        <mat-form-field appearance="fill">
+            <mat-label>Bí Danh</mat-label>
+            <input matInput formControlName="biDanh" />
+            <mat-icon matSuffix>
+                <span class="material-icons">
+                    email
+                </span>
+            </mat-icon>
+            <mat-error *ngIf="updateMovieForm.get('biDanh')?.invalid">
+                <span *ngIf="updateMovieForm.get('biDanh')?.errors?.required">
+                    Bí danh không được để trống
+                </span>
+
+            </mat-error>
+        </mat-form-field>
+
+        <!-- họ Tên  -->
+        <mat-form-field appearance="fill">
+            <mat-label>Trailer</mat-label>
+            <input matInput formControlName="trailer">
+            <mat-icon matSuffix>
+                <span class="material-icons">
+                    face
+                </span>
+            </mat-icon>
+            <mat-error *ngIf="updateMovieForm.get('trailer')?.invalid">
+                <span *ngIf="updateMovieForm.get('trailer')?.errors?.required">
+                    Trailer không được để trống
+                </span>
+
+            </mat-error>
+        </mat-form-field>
+
+        <!-- Số điện thoại  -->
+        <mat-form-field appearance="fill">
+            <mat-label>Hình Ảnh</mat-label>
+            <input matInput formControlName="hinhAnh">
+            <mat-icon matSuffix>
+                <span class="material-icons">
+                    perm_phone_msg
+                </span>
+            </mat-icon>
+            <mat-error *ngIf="updateMovieForm.get('hinhAnh')?.invalid">
+                <span *ngIf="updateMovieForm.get('hinhAnh')?.errors?.required">
+                    Hình ảnh không được để trống
+                </span>
+
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Mô tả</mat-label>
+            <input matInput formControlName="moTa">
+            <mat-icon matSuffix>
+                <span class="material-icons">
+                    face
+                </span>
+            </mat-icon>
+            <mat-error *ngIf="updateMovieForm.get('moTa')?.invalid">
+                <span *ngIf="updateMovieForm.get('moTa')?.errors?.required">
+                    Mô tả không được để trống
+                </span>
+                <span *ngIf="updateMovieForm.get('moTa')?.errors?.minlength">
+                    Mô tả phải lớn hơn 10 ký tự
+                </span>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Mã Nhóm</mat-label>
+            <input matInput formControlName="maNhom">
+            <mat-icon matSuffix>
+                <span class="material-icons">
+                    perm_phone_msg
+                </span>
+            </mat-icon>
+            <mat-error *ngIf="updateMovieForm.get('maNhom')?.invalid">
+                <span *ngIf="updateMovieForm.get('maNhom')?.errors?.required">
+                    Mã nhóm không được để trống
+                </span>
+
+            </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>Ngày Khởi Chiếu</mat-label>
+            <input matInput formControlName="ngayKhoiChieu" id="datepicker">
+            <mat-icon matSuffix>
+                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+            </mat-icon>
+            <mat-error *ngIf="updateMovieForm.get('ngayKhoiChieu')?.invalid">
+                <span *ngIf="updateMovieForm.get('ngayKhoiChieu')?.errors?.required">
+                    Ngày khởi chiếu không được để trống
+                </span>
+
+            </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>Đánh Giá</mat-label>
+            <input matInput formControlName="danhGia">
+            <mat-icon matSuffix>
+                <span class="material-icons">
+                    perm_phone_msg
+                </span>
+            </mat-icon>
+            <mat-error *ngIf="updateMovieForm.get('danhGia')?.invalid">
+                <span *ngIf="updateMovieForm.get('danhGia')?.errors?.required">
+                    Đánh giá không được để trống
+                </span>
+
+            </mat-error>
+        </mat-form-field>
+
+
+        <!-- <button [disabled]="signupForm.invalid">Submit</button> -->
+        <button mat-raised-button color="accent">Cập nhật</button>
+        <p *ngIf="errors" class="alert alert-danger">
+            {{errors?.error}}
+        </p>
+    </form>
+</div>
+
+<div class="modal-succcess">
+    <div class="text-center">
+        <!-- Button HTML (to Trigger Modal) -->
+        <a #myDiv href="#myModal" class="trigger-btn" data-toggle="modal" id="modal-trigger">Click to Open Confirm
+            Modal</a>
+    </div>
+
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog modal-confirm modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="icon-box">
+                        <i class="material-icons">offline_pin</i>
+                    </div>
+                    <h4 class="modal-title">Awesome!</h4>
+                </div>
+
+                <div class="modal-body">
+                    <p class="text-center">Chúc mừng bạn đã update thông tin cá nhân thành công</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success btn-block" data-dismiss="modal" routerLink="/admin/users">OK</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $(function () {
+        $("#datepicker").datepicker({
+            showOn: "button",
+            buttonImage: "img/calendar-icon.png",
+            buttonImageOnly: true,
+            buttonText: "Select date",
+            dateFormat: "mm/dd/yy"
+
+        });
+    });
+
+    // Lay ngay mac dinh
+    $(document).ready(function () {
+        var d = new Date();
+
+        var month = d.getMonth() + 1;
+        var day = d.getDate();
+
+        var output = (('' + month).length < 2 ? '0' : '') + month + '/' +
+            (('' + day).length < 2 ? '0' : '') + day + '/' +
+            d.getFullYear();
+        $('#datepicker').val(output);
+    });
+</script> -->

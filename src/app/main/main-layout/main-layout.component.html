@@ -48,8 +48,9 @@
                     <img src="assets/img/comment0.jpg" alt="">
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownId">
-                    <a class="dropdown-item" href="#">Thông tin cá nhân</a>
-                    <a class="dropdown-item" href="#">Lịch sử đặt vé</a>
+                    <a class="dropdown-item" routerLink="/user">Thông tin cá nhân</a>
+                    <a class="dropdown-item" routerLink="/user/update">Chỉnh sửa thông tin</a>
+                    <a class="dropdown-item" routerLink="/user/history">Lịch sử đặt vé</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="/" (click)="logOut()">Đăng xuất</a>
                 </div>

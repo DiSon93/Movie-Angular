@@ -1,0 +1,72 @@
+.user_list {
+    text-align: center;
+}
+table {
+    width: 100%;
+    th {
+        font-size: 18px;
+        color: orangered;
+        padding-bottom: 18px;
+        padding-left: 20px;
+    }
+    td {
+        text-align: left;
+        padding-top: 16px;
+        padding-left: 20px;
+    }
+    img.hinh_anh_phim {
+        width: 80px;
+        height: 100px;    
+    }
+    .td_hinhAnh{
+        padding: 0!important;
+    }
+}
+h1 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 500;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    color: orangered;
+}
+.btn-update {
+    background: palegreen;
+    display: flex;
+    align-items: center;
+    padding-top: 28px !important;
+    padding-bottom: 28px;
+
+    button.updateUser {
+        background: linear-gradient(to right, white, rgb(80, 80, 245));
+        padding: 0px 5px;
+
+        &:hover {
+            background: white;
+            border: 1px solid blue;
+            transition: 0.5s;
+        }
+    }
+    .deleteUser {
+        background: white;
+        border: 1px solid rgb(235, 40, 73);
+    }
+
+}
+
+.search_formm {
+    display: flex;
+    justify-content: center;
+    .search__user {
+        text-align: center;
+        width: 400px;
+        margin: 0 auto;
+        .form-control-navbar {
+            width: 350px;
+        }
+        .btn-navbar {
+            border: 0.5px solid gray;
+        }
+        margin-bottom: 30px;
+    }
+}
